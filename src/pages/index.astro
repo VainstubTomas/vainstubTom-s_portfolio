@@ -2,9 +2,12 @@
 import Layout from '../layouts/Layout.astro';
 import Badge from '../components/Badge.astro';
 import SocialPill from '../components/SocialPill.astro'
+import Experience from '../components/Experience.astro';
+import Container from '../components/Container.astro'
 import Linkedin from '../components/icons/Linkedin.astro';
 import GitHub from '../components/icons/GitHub.astro';
 import Mail from '../components/icons/Mail.astro';
+import Suitcase from '../components/icons/Suitcase.astro';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -16,14 +19,14 @@ import Mail from '../components/icons/Mail.astro';
 	description="Interesado en el aprendizaje continuo y el desarrollo de soluciones de software optimas">
 	<main>
 
-		<section class="w-full lg:w-[740px] mx-auto py-44">
+		<Container class="py-44 pb-30" id="inicio">
 			<img class="rounded-full w-18 h-18 mb-8" src="/profile.jpeg" alt="vainstubPhoto">
 			<h1 class="text-white text-5xl font-bold flex flex-row gap-x-4 pb-10">Hola, soy Tomás Vainstub<a
 					href="https://www.linkedin.com/in/vainstubtomas/"
 					target="_blank"
 					class="flex justify-center items-center"
 				><Badge>Disponible</Badge></a></h1>
-			<h2 class="text-2xl text-wrap"><span>+2 años de experiencia en el área informatica. </span><span class="opacity-70">De Paraná,</span><span class="text-blue-200"> Argentina</span> <span class="opacity-70">. Estudiante avanzado de </span><span class="text-yellow-100">Ingenieria en Computación.</span></h2>
+			<h2 class="text-2xl text-wrap"><span>+2 años de experiencia en el área informatica. </span><span class="text-blue-200">De Paraná, Argentina</span> <span class="opacity-70">. Estudiante avanzado de </span><span class="text-yellow-100">Ingenieria en Computación.</span></h2>
 
 			<nav class="flex gap-x-2 py-5">
 				<SocialPill href="https://www.linkedin.com/in/vainstubtomas/">
@@ -39,7 +42,15 @@ import Mail from '../components/icons/Mail.astro';
 					vainstubtomas@gmail.com
 				</SocialPill>
 			</nav>
-		</section>
+		</Container>
+
+		<Container id="experiencia">
+			<h2 class="text-2xl font-semibold mb-8 flex items-center gap-3">
+				<Suitcase class="size-7"/>
+				Experiencia laboral
+			</h2>
+			<Experience />
+		</Container>
 		
 	</main>
 </Layout>
