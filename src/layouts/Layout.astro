@@ -23,11 +23,10 @@ import Experience from '../components/Experience.astro';
 		<title>Portfolio - Vainstub Tomás</title>
 	</head>
 	<body>
-		<div class="absolute top-0 right-0 -z-10 h-full w-full [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]"></div>
+		<div class="fixed top-0 left-0 -z-10 min-h-full w-full [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]"></div>
 		<div class="relative z-10">
 			<Header/>
 			<slot />
-			<Experience/>
 		</div>
 	</body>
 </html>
@@ -39,6 +38,7 @@ import Experience from '../components/Experience.astro';
 
 	html{
 		font-family: 'Onest Variable', sans-serif;
+		scroll-behavior: smooth;
 	}
 
 	body {
@@ -47,5 +47,11 @@ import Experience from '../components/Experience.astro';
 		display: flex;
 		flex-direction: column;
 		min-height: 100vh;
+	}
+
+	@media (prefers-reduced-motion: reduce){
+		html{
+			scroll-behavior: auto;
+		}
 	}
 </style>
