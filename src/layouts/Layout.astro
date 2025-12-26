@@ -1,0 +1,51 @@
+---
+interface Props{
+	title: string
+	description: string
+}
+
+const { title, description } = Astro.props
+
+import Header from '../components/Header.astro';
+import '../styles/global.css';
+import '@fontsource-variable/onest';
+import Experience from '../components/Experience.astro';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="description" content={description}>
+		<meta name="generator" content={Astro.generator} />
+		<title>Portfolio - Vainstub Tomás</title>
+	</head>
+	<body>
+		<div class="absolute top-0 right-0 -z-10 h-full w-full [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]"></div>
+		<div class="relative z-10">
+			<Header/>
+			<slot />
+			<Experience/>
+		</div>
+	</body>
+</html>
+
+<style is:global>
+	:root{
+		color-scheme: light dark;
+	}
+
+	html{
+		font-family: 'Onest Variable', sans-serif;
+	}
+
+	body {
+		background-color: #050500;
+		color: white;
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh;
+	}
+</style>

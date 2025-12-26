@@ -1,0 +1,45 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Badge from '../components/Badge.astro';
+import SocialPill from '../components/SocialPill.astro'
+import Linkedin from '../components/icons/Linkedin.astro';
+import GitHub from '../components/icons/GitHub.astro';
+import Mail from '../components/icons/Mail.astro';
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+---
+
+<!-- TODO: Utilizar lib "TypeAnimation" de React en el badge  y sumar => Desarrollador de software 👨🏻‍💻 -->
+<Layout
+	title="Portfolio de Tomas Vainstub - Desarrolador de software y Estudiante avanzado en Ingenieria en Computación"
+	description="Interesado en el aprendizaje continuo y el desarrollo de soluciones de software optimas">
+	<main>
+
+		<section class="w-full lg:w-[740px] mx-auto py-44">
+			<img class="rounded-full w-18 h-18 mb-8" src="/profile.jpeg" alt="vainstubPhoto">
+			<h1 class="text-white text-5xl font-bold flex flex-row gap-x-4 pb-10">Hola, soy Tomás Vainstub<a
+					href="https://www.linkedin.com/in/vainstubtomas/"
+					target="_blank"
+					class="flex justify-center items-center"
+				><Badge>Disponible</Badge></a></h1>
+			<h2 class="text-2xl text-wrap"><span>+2 años de experiencia en el área informatica. </span><span class="opacity-70">De Paraná,</span><span class="text-blue-200"> Argentina</span> <span class="opacity-70">. Estudiante avanzado de </span><span class="text-yellow-100">Ingenieria en Computación.</span></h2>
+
+			<nav class="flex gap-x-2 py-5">
+				<SocialPill href="https://www.linkedin.com/in/vainstubtomas/">
+					<Linkedin class="size-6"/>
+					LinkedIn
+				</SocialPill>
+				<SocialPill href="https://github.com/VainstubTomas">
+					<GitHub class="size-6"/>
+					GitHub
+				</SocialPill>
+				<SocialPill href="https://github.com/VainstubTomas">
+					<Mail class="size-6"/>
+					vainstubtomas@gmail.com
+				</SocialPill>
+			</nav>
+		</section>
+		
+	</main>
+</Layout>

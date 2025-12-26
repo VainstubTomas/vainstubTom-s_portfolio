@@ -1,0 +1,28 @@
+---
+import ExperienceItem from "./ExperienceItem.astro"
+
+const XP = [
+    {
+        date: "Feb. 2024 - actualidad.",
+        title:"Administrador de Servicio Técnico.",
+        description:"Brindar apoyo tecnico al cliente ante problemas o dudas sobre el software o hardware de la empresa. Proveer feedback al área de desarrollo además de brindar apoyo y soluciones.",
+    },
+    {
+       date: "Jul. 2025 - actualidad.",
+        title:"Desarrollador de software.",
+        description:"Desarrollar soluciones optimas y escalables en tiempos definidos con un flujo de trabajo en equipo solido y productivo.", 
+    }
+]
+---
+
+
+<ol class="relative border-s border-default">
+    {
+        XP.map(xp=>(
+            <li class="mb-10 ms-4">
+                <ExperienceItem {...xp}/>
+            </li>
+        ))
+    }                 
+</ol>
+
