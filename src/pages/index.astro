@@ -13,6 +13,8 @@ import GitHub from '../components/icons/GitHub.astro';
 import Mail from '../components/icons/Mail.astro';
 import Suitcase from '../components/icons/Suitcase.astro';
 import Code from '../components/icons/Code.astro';
+import Contacto from '../components/Contacto.astro';
+import Sobremi from '../components/Sobremi.astro';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -63,6 +65,22 @@ import Code from '../components/icons/Code.astro';
 			</h2>
 			<SkeletonProximoProyecto/>
 			<Projects/>
+		</Container>
+
+		<Container id="sobre-mi">
+			<h2 class="text-3xl font-semibold mb-8 flex items-center gap-3">
+				<Code class="size-7"/>
+				Sobre mi
+			</h2>
+			<Sobremi/>
+		</Container>
+
+		<Container id="contacto">
+			<h2 class="text-3xl font-semibold mb-8 flex items-center gap-3">
+				<Code class="size-7"/>
+				Contacto
+			</h2>
+			<Contacto/>
 		</Container>
 		
 	</main>
