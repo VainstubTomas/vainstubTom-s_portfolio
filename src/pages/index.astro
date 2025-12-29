@@ -43,7 +43,7 @@ import Sobremi from '../components/Sobremi.astro';
 					<GitHub class="size-4 lg:size-6"/>
 					GitHub
 				</SocialPill>
-				<SocialPill href="https://github.com/VainstubTomas">
+				<SocialPill id="email-pill" href="#">
 					<Mail class="size-4 lg:size-6"/>
 					vainstubtomas@gmail.com
 				</SocialPill>
@@ -85,3 +85,38 @@ import Sobremi from '../components/Sobremi.astro';
 		
 	</main>
 </Layout>
+
+<script>
+    // @ts-ignore
+    import Toastify from 'toastify-js';
+    import 'toastify-js/src/toastify.css';
+
+    const supportEmail = 'vainstubtomas@gmail.com';
+
+    const copyEmailToClipboard = async (email: string) => {
+        try {
+            await navigator.clipboard.writeText(email);
+            // @ts-ignore
+            Toastify({
+                text: "Correo copiado al portapapeles",
+                className: "emailClipboard",
+                gravity: "bottom",
+                style: {
+                    background: "#00b09b",
+                }
+            }).showToast();
+        } catch (err) {
+            console.error('Error al intentar copiar: ', err);
+        }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const emailPill = document.getElementById('email-pill');
+        if (emailPill) {
+            emailPill.addEventListener('click', (e) => {
+                e.preventDefault();
+                copyEmailToClipboard(supportEmail);
+            });
+        }
+    });
+</script>
