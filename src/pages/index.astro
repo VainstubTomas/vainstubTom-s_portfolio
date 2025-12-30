@@ -7,14 +7,16 @@ import Experience from '../components/Experience.astro';
 import Container from '../components/Container.astro'
 import Projects from '../components/Projects.astro'
 import SkeletonProximoProyecto from '../components/SkeletonProximoProyecto.astro';
+import Contacto from '../components/Contacto.astro';
+import Sobremi from '../components/Sobremi.astro';
 
 import Linkedin from '../components/icons/Linkedin.astro';
 import GitHub from '../components/icons/GitHub.astro';
 import Mail from '../components/icons/Mail.astro';
 import Suitcase from '../components/icons/Suitcase.astro';
 import Code from '../components/icons/Code.astro';
-import Contacto from '../components/Contacto.astro';
-import Sobremi from '../components/Sobremi.astro';
+import SobreMiIcon from '../components/icons/SobreMi.astro';
+import ContactIcon from '../components/icons/Contact.astro'
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -69,7 +71,7 @@ import Sobremi from '../components/Sobremi.astro';
 
 		<Container id="sobre-mi">
 			<h2 class="text-3xl font-semibold mb-8 flex items-center gap-3">
-				<Code class="size-7"/>
+				<SobreMiIcon class="size-7"/>
 				Sobre mi
 			</h2>
 			<Sobremi/>
@@ -77,7 +79,7 @@ import Sobremi from '../components/Sobremi.astro';
 
 		<Container id="contacto">
 			<h2 class="text-3xl font-semibold mb-8 flex items-center gap-3">
-				<Code class="size-7"/>
+				<ContactIcon class="size-7"/>
 				Contacto
 			</h2>
 			<Contacto/>
