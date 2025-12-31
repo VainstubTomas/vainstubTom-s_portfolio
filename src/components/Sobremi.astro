@@ -1,17 +1,86 @@
+---
+import SkillsPills from "./SkillsPills.astro"
+---
+
 <section>
-    <h3 class="text-2xl font-semibold text-yellow-200 mb-2">(Proximamente)</h3>
-    <div role="status" class="mb-10 space-y-8 animate-pulse md:space-y-0 md:space-x-8 rtl:space-x-reverse md:flex md:items-center">
-    <div class="flex items-center justify-center w-full h-48 bg-gray-700/50 rounded-base sm:w-96">
-        <svg class="w-11 h-11 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m3 16 5-7 6 6.5m6.5 2.5L16 13l-4.286 6M14 10h.01M4 19h16a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Z"/></svg>
+    <h2 class="text-xl lg:text-2xl text-wrap max-w-[700px] text-justify"><span class="text-green-200">Desarrollador de Software</span><span class="opacity-80"> con mentalidad de ingeniero especializado en el diseño e implementación de sistemas integrales, con un fuerte enfoque en </span><span class="text-green-200">Backend e Internet de las Cosas (IIoT).</span></h2>
+    <div class="mb-10 mt-10">
+        <h2 class="text-xl lg:text-2xl text-wrap max-w-[700px] text-justify mb-5">Mi stack tecnológico principal incluye:</h2>
+        <h3 class="text-green-300">Backend</h3>
+        <nav class="flex gap-2 py-5 flex-wrap">
+            <SkillsPills>
+                <p>Node.js</p>
+            </SkillsPills>
+            <SkillsPills>
+                <p>Typescript</p>
+            </SkillsPills>
+            <SkillsPills>
+                <p>Express</p>
+            </SkillsPills>
+            <SkillsPills>
+                <p>Python</p>
+            </SkillsPills>
+            <SkillsPills>
+                <p>FastAPI</p>
+            </SkillsPills>
+            <SkillsPills>
+                <p>MySQL</p>
+            </SkillsPills>
+            <SkillsPills>
+                <p>MongoDB</p>
+            </SkillsPills>
+            <SkillsPills>
+                <p>C++</p>
+            </SkillsPills>
+        </nav>
+        <h3 class="text-green-400">Frontend</h3>
+        <nav class="flex gap-2 py-5 flex-wrap">
+            <SkillsPills>
+                <p>React</p>
+            </SkillsPills>
+            <SkillsPills>
+                <p>Typescript</p>
+            </SkillsPills>
+            <SkillsPills>
+                <p>Next.js</p>
+            </SkillsPills>
+            <SkillsPills>
+                <p>TailwindCSS</p>
+            </SkillsPills>
+            <SkillsPills>
+                <p>React Native</p>
+            </SkillsPills>
+            <SkillsPills>
+                <p>Bootstrap</p>
+            </SkillsPills>
+            <SkillsPills>
+                <p>Zustand</p>
+            </SkillsPills>
+            <SkillsPills>
+                <p>Electron</p>
+            </SkillsPills>
+            <SkillsPills>
+                <p>JavaScript</p>
+            </SkillsPills>
+            <SkillsPills>
+                <p>HTML</p>
+            </SkillsPills>
+            <SkillsPills>
+                <p>CSS</p>
+            </SkillsPills>
+            <SkillsPills>
+                <p>Astro</p>
+            </SkillsPills>
+        </nav>
+        <h3 class="text-green-500">Herramientas</h3>
+        <nav class="flex gap-2 py-5 flex-wrap">
+            <SkillsPills>
+                <p>Docker</p>
+            </SkillsPills>
+            <SkillsPills>
+                <p>GitHub</p>
+            </SkillsPills>
+        </nav>
     </div>
-    <div class="w-full">
-        <div class="h-2.5 bg-gray-700/50 rounded-full w-48 mb-4"></div>
-        <div class="h-2 bg-gray-700/50 rounded-full max-w-[480px] mb-2.5"></div>
-        <div class="h-2 bg-gray-700/50 rounded-full mb-2.5"></div>
-        <div class="h-2 bg-gray-700/50 rounded-full max-w-[440px] mb-2.5"></div>
-        <div class="h-2 bg-gray-700/50 rounded-full max-w-[460px] mb-2.5"></div>
-        <div class="h-2 bg-gray-700/50 rounded-full max-w-[360px]"></div>
-    </div>
-    <span class="sr-only">Cargando...</span>
-    </div>
+    <h2 class="text-xl lg:text-2xl text-wrap max-w-[700px] text-justify"><span class="opacity-80">Actualmente aplico estos conocimientos para desarrollar</span> <span class="text-green-200">soluciones óptimas</span> <span class="opacity-80">en entornos corporativos combinando</span> <span class="text-green-200">buenas prácticas </span><span class="opacity-80">de desarrollo con una</span> <span class="text-green-200">visión analítica</span> <span class="opacity-80">para la resolución de problemas.</span></h2>
 </section>
