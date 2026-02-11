@@ -1,0 +1,127 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const t = useTranslations('es');
+
+import Badge from '../../components/Badge.astro';
+import SocialPill from '../../components/SocialPill.astro'
+import Experience from '../../components/Experience.astro';
+import Container from '../../components/Container.astro'
+import Projects from '../../components/Projects.astro'
+import SkeletonProximoProyecto from '../../components/SkeletonProximoProyecto.astro';
+import Contacto from '../../components/Contacto.astro';
+import Sobremi from '../../components/Sobremi.astro';
+
+import Linkedin from '../../components/icons/Linkedin.astro';
+import GitHub from '../../components/icons/GitHub.astro';
+import Mail from '../../components/icons/Mail.astro';
+import Suitcase from '../../components/icons/Suitcase.astro';
+import Code from '../../components/icons/Code.astro';
+import SobreMiIcon from '../../components/icons/SobreMi.astro';
+import ContactIcon from '../../components/icons/Contact.astro'
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+---
+
+<Layout
+	title="Portfolio de Tomas Vainstub - Desarrolador de software y Estudiante avanzado en Ingenieria en Computación"
+	description="Interesado en el aprendizaje continuo y el desarrollo de soluciones de software optimas">
+	<main class="px-4">
+
+		<Container class="py-44 pb-30" id="inicio">
+			<img class="rounded-full w-18 h-18 mb-8" src="/profile.jpeg" alt="vainstubPhoto">
+			<h1 class="text-white text-3xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10">{t('hero.saludo')}<a
+					href="https://www.linkedin.com/in/vainstubtomas/"
+					target="_blank"
+					class="flex justify-center items-center"
+				><Badge>{t('hero.pastilla')}</Badge></a></h1>
+			<h2 class="text-xl lg:text-2xl text-wrap max-w-[700px]">{t('hero.texto')}</h2>
+
+			<nav class="flex gap-2 py-5 flex-wrap">
+				<SocialPill href="https://www.linkedin.com/in/vainstubtomas/">
+					<Linkedin class="size-4 lg:size-6"/>
+					LinkedIn
+				</SocialPill>
+				<SocialPill href="https://github.com/VainstubTomas">
+					<GitHub class="size-4 lg:size-6"/>
+					GitHub
+				</SocialPill>
+				<SocialPill id="email-pill" href="#">
+					<Mail class="size-4 lg:size-6"/>
+					vainstubtomas@gmail.com
+				</SocialPill>
+			</nav>
+		</Container>
+
+		<Container id="experiencia">
+			<h2 class="text-3xl font-semibold mb-8 flex items-center gap-3">
+				<Suitcase class="size-7"/>
+				{t('experiencia.titulo')}
+			</h2>
+			<Experience />
+		</Container>
+
+		<Container id="proyectos">
+			<h2 class="text-3xl font-semibold mb-8 flex items-center gap-3">
+				<Code class="size-7"/>
+				{t('proyectos.titulo')}
+			</h2>
+			<SkeletonProximoProyecto/>
+			<Projects/>
+		</Container>
+
+		<Container id="sobre-mi">
+			<h2 class="text-3xl font-semibold mb-8 flex items-center gap-3">
+				<SobreMiIcon class="size-7"/>
+				{t('sobremi.titulo')}
+			</h2>
+			<Sobremi/>
+		</Container>
+
+		<Container id="contacto">
+			<h2 class="text-3xl font-semibold mb-8 flex items-center gap-3">
+				<ContactIcon class="size-7"/>
+				{t('contacto.titulo')}
+			</h2>
+			<Contacto/>
+		</Container>
+		
+	</main>
+</Layout>
+
+<script>
+    // @ts-ignore
+    import Toastify from 'toastify-js';
+    import 'toastify-js/src/toastify.css';
+
+    const supportEmail = 'vainstubtomas@gmail.com';
+
+    const copyEmailToClipboard = async (email: string) => {
+        try {
+            await navigator.clipboard.writeText(email);
+            // @ts-ignore
+            Toastify({
+                text: "Correo copiado al portapapeles",
+                className: "emailClipboard",
+                gravity: "bottom",
+                style: {
+                    background: "#00b09b",
+                }
+            }).showToast();
+        } catch (err) {
+            console.error('Error al intentar copiar: ', err);
+        }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const emailPill = document.getElementById('email-pill');
+        if (emailPill) {
+            emailPill.addEventListener('click', (e) => {
+                e.preventDefault();
+                copyEmailToClipboard(supportEmail);
+            });
+        }
+    });
+</script>

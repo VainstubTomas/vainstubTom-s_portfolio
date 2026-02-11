@@ -1,16 +1,11 @@
-<!-- <header class="flex justify-center items-center py-5 w-full fixed top-0 left-0 right-0 bg-black/80 backdrop-blur-lg z-50">
-    <nav class="flex flex-row gap-x-10">
-        <a href="#inicio" class="opacity-70 hover:opacity-100 transition-opacity duration-300">Inicio</a>
-        <a href="#experiencia" class="opacity-70 hover:opacity-100 transition-opacity duration-300">Experiencia</a>
-        <a href="#proyectos" class="opacity-70 hover:opacity-100 transition-opacity duration-300">Proyectos</a>
-        <a href="#sobre-mi" class="opacity-70 hover:opacity-100 transition-opacity duration-300">Sobre mi</a>
-        <a href="#contacto" class="opacity-70 hover:opacity-100 transition-opacity duration-300">Contacto</a>
-    </nav>
-</header> -->
+---
+import LanguageSelector from "./LanguageSelector.astro"
+---
 
 <header class="flex justify-between items-center px-4 py-5 w-full fixed top-0 left-0 right-0 bg-black/80 backdrop-blur-lg z-50">
     <!-- Menú desktop -->
-    <nav class="hidden md:flex flex-row gap-x-10 mx-auto">
+    <nav class="hidden md:flex flex-row gap-x-10 mx-auto items-center">
+        <LanguageSelector />
         <a href="#inicio" class="opacity-70 hover:opacity-100 transition-opacity duration-300">Inicio</a>
         <a href="#experiencia" class="opacity-70 hover:opacity-100 transition-opacity duration-300">Experiencia</a>
         <a href="#proyectos" class="opacity-70 hover:opacity-100 transition-opacity duration-300">Proyectos</a>

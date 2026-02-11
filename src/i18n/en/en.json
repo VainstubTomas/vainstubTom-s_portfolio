@@ -1,0 +1,48 @@
+{
+    "nav.inicio": "Home",
+    "nav.exp": "Experience",
+    "nav.proyectos": "Projects",
+    "nav.sobremi": "About Me",
+    "nav.contacto": "Contact",
+
+    "hero.saludo": "Hi, I'm Tomás Vainstub",
+    "hero.pastilla": "Available",
+    "hero.texto": "+2 years of experience in IT. From Paraná, Argentina. Advanced Computer Engineering student.",
+
+    "experiencia.titulo": "Work Experience",
+    "experiencia.fecha_1": "Jul. 2025 - present",
+    "experiencia.institución_1": "Institution - Ivolution",
+    "experiencia.puesto_1": "Software Developer",
+    "experiencia.descrip_1": "Design and implementation of scalable full-stack solutions using modern technologies to ensure clean and maintainable code, managing version control and collaboration through online workflows.",
+    "experiencia.fecha_2": "Feb. 2024 - present",
+    "experiencia.institución_2": "Institution - Ivolution",
+    "experiencia.puesto_2": "Technical Service Administrator",
+    "experiencia.descrip_2": "Provide technical support to clients for problems or questions about the company's software or hardware. Provide feedback to the development area as well as support and solutions. Maintain stock of products and materials. Test final products before sale.",
+
+    "proyectos.title": "Projects",
+    "proyectos.nuevo": "Loading new project",
+    "proyectos.p1": "Tomás Vainstub Portfolio",
+    "proyectos.descrip_p1": "Personal website developed with Astro and Tailwind CSS to showcase projects, experience and software development skills.",
+    "proyectos.p2": "Ivolution Trainer Landing Page",
+    "proyectos.descrip_p2": "Corporate landing page developed for Ivolution, focused on presenting the new Ivolution Trainer platform which will provide a new face to the institution and improvements as well as new functionalities to its users.",
+    "proyectos.p3": "Industrial Control Monitor",
+    "proyectos.descrip_p3": "Bidirectional telemetry and control system designed to digitize industrial environments. A 5-layer architecture was implemented that transforms field signals (Modbus RTU/RS485) into cloud data, using OPC UA as an interoperability standard and MQTT for scalable propagation. The solution enables real-time supervision and control of actuators from a reactive web interface using WebSocket, eliminating information blind spots in a plant.",
+    "proyectos.p4": "IvolutionX Landing Page",
+    "proyectos.descrip_p4": "Corporate landing page developed for Ivolution, focused on presenting the company's solutions in a clear and effective way.",
+
+    "sobremi.titulo": "About Me",
+    "sobremi.texto1": "Software Developer with an engineering mindset specialized in the design and implementation of comprehensive systems, with a strong focus on Backend and Industrial Internet of Things (IIoT)",
+    "sobremi.stack": "My main tech stack includes",
+    "sobremi.herramientas_pastilla": "Tools",
+    "sobremi.texto2": "I currently apply this knowledge to develop optimal solutions in corporate environments combining good development practices with an analytical vision for problem solving.",
+
+    "contacto.titulo": "Contact",
+    "contacto.texto": "In order to maintain orderly and efficient communication, I centralize all professional interactions through my email. If you would like to discuss potential projects or technical requirements, please contact me at vainstubtomas@gmail.com",
+
+    "footer.derechos": "All rights reserved",
+    "footer.inicio": "Home",
+    "footer.exp": "Experience",
+    "footer.proyectos": "Projects",
+    "footer.sobremi": "About Me",
+    "footer.contacto": "Contact"
+}
