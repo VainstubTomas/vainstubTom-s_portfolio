@@ -1,21 +1,20 @@
-<!-- <header class="flex justify-center items-center py-5 w-full fixed top-0 left-0 right-0 bg-black/80 backdrop-blur-lg z-50">
-    <nav class="flex flex-row gap-x-10">
-        <a href="#inicio" class="opacity-70 hover:opacity-100 transition-opacity duration-300">Inicio</a>
-        <a href="#experiencia" class="opacity-70 hover:opacity-100 transition-opacity duration-300">Experiencia</a>
-        <a href="#proyectos" class="opacity-70 hover:opacity-100 transition-opacity duration-300">Proyectos</a>
-        <a href="#sobre-mi" class="opacity-70 hover:opacity-100 transition-opacity duration-300">Sobre mi</a>
-        <a href="#contacto" class="opacity-70 hover:opacity-100 transition-opacity duration-300">Contacto</a>
-    </nav>
-</header> -->
+---
+import LanguageSelector from "./LanguageSelector.astro"
+import { useTranslations, getLangFromUrl } from "../i18n/utils"
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
 
 <header class="flex justify-between items-center px-4 py-5 w-full fixed top-0 left-0 right-0 bg-black/80 backdrop-blur-lg z-50">
     <!-- Menú desktop -->
-    <nav class="hidden md:flex flex-row gap-x-10 mx-auto">
-        <a href="#inicio" class="opacity-70 hover:opacity-100 transition-opacity duration-300">Inicio</a>
-        <a href="#experiencia" class="opacity-70 hover:opacity-100 transition-opacity duration-300">Experiencia</a>
-        <a href="#proyectos" class="opacity-70 hover:opacity-100 transition-opacity duration-300">Proyectos</a>
-        <a href="#sobre-mi" class="opacity-70 hover:opacity-100 transition-opacity duration-300">Sobre mi</a>
-        <a href="#contacto" class="opacity-70 hover:opacity-100 transition-opacity duration-300">Contacto</a>
+    <nav class="hidden md:flex flex-row gap-x-10 mx-auto items-center">
+        <LanguageSelector />
+        <a href="#inicio" class="opacity-70 hover:opacity-100 transition-opacity duration-300">{t('nav.inicio')}</a>
+        <a href="#experiencia" class="opacity-70 hover:opacity-100 transition-opacity duration-300">{t('nav.exp')}</a>
+        <a href="#proyectos" class="opacity-70 hover:opacity-100 transition-opacity duration-300">{t('nav.proyectos')}</a>
+        <a href="#sobre-mi" class="opacity-70 hover:opacity-100 transition-opacity duration-300">{t('nav.sobremi')}</a>
+        <a href="#contacto" class="opacity-70 hover:opacity-100 transition-opacity duration-300">{t('nav.contacto')}</a>
     </nav>
 
     <!-- Botón hamburguesa (solo móvil) -->
@@ -28,11 +27,12 @@
     <!-- Menú móvil -->
     <nav id="mobile-menu" class="md:hidden fixed top-[72px] left-0 right-0 bg-black/95 backdrop-blur-lg hidden">
         <div class="flex flex-col items-center gap-6 py-8">
-            <a href="#inicio" class="mobile-link opacity-70 hover:opacity-100 transition-opacity duration-300 text-lg">Inicio</a>
-            <a href="#experiencia" class="mobile-link opacity-70 hover:opacity-100 transition-opacity duration-300 text-lg">Experiencia</a>
-            <a href="#proyectos" class="mobile-link opacity-70 hover:opacity-100 transition-opacity duration-300 text-lg">Proyectos</a>
-            <a href="#sobre-mi" class="mobile-link opacity-70 hover:opacity-100 transition-opacity duration-300 text-lg">Sobre mi</a>
-            <a href="#contacto" class="mobile-link opacity-70 hover:opacity-100 transition-opacity duration-300 text-lg">Contacto</a>
+            <LanguageSelector />
+            <a href="#inicio" class="mobile-link opacity-70 hover:opacity-100 transition-opacity duration-300 text-lg">{t('nav.inicio')}</a>
+            <a href="#experiencia" class="mobile-link opacity-70 hover:opacity-100 transition-opacity duration-300 text-lg">{t('nav.exp')}</a>
+            <a href="#proyectos" class="mobile-link opacity-70 hover:opacity-100 transition-opacity duration-300 text-lg">{t('nav.proyectos')}</a>
+            <a href="#sobre-mi" class="mobile-link opacity-70 hover:opacity-100 transition-opacity duration-300 text-lg">{t('nav.sobremi')}</a>
+            <a href="#contacto" class="mobile-link opacity-70 hover:opacity-100 transition-opacity duration-300 text-lg">{t('nav.contacto')}</a>
         </div>
     </nav>
 </header>

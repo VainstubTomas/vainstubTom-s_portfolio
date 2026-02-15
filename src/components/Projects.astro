@@ -1,4 +1,9 @@
 ---
+import { useTranslations, getLangFromUrl } from "../i18n/utils"
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 const TAGS = {
     NEXT: {
         name:'Next.js',
@@ -35,21 +40,9 @@ const TAGS = {
 }
 
 const PROJECTS = [
-    // {
-    //    title:'Ecommerce',
-    //    description: 'Plataforma de comercio electrónico completa con sistema de autenticación de usuarios, gestión de sesiones seguras y pasarela de pago integrada. Incluye funcionalidades de carrito de compras, catálogo de productos dinámico y un panel de administración para gestión de inventario.',
-    //    //TODO: agregar link,
-    //    link:'#',
-    //    //TODO: agregar link,
-    //    github: '#',
-    //    //TODO: modificar img,
-    //    image:'/projects/portfolio.webp',
-    //    //TODO: modificar tags,
-    //    tags:[TAGS.ASTRO, TAGS.TAILWIND]
-    // },
     {
-       title:'Portfolio de Tomás Vainstub',
-       description: 'Sitio web personal desarrollado con Astro y Tailwind CSS para mostrar proyectos, experiencia y habilidades en desarrollo de software.',
+       title:`${t('proyectos.p1')}`,
+       description: `${t('proyectos.descrip_p1')}`,
        //TODO: agregar link,
        link:'#',
        github: 'https://github.com/VainstubTomas/vainstubTom-s_portfolio.git',
@@ -57,21 +50,21 @@ const PROJECTS = [
        tags:[TAGS.ASTRO, TAGS.TAILWIND]
     },
     {
-       title:'Landing page Ivolution Trainer',
-       description: 'Landing page corporativa desarrollada para Ivolution, enfocada en presentar la nueva plataforma Ivolution Trainer la cual brindará una nueva cara a la institución y mejoras como tambien nuevas funcionalidades a sus usuarios.',
+       title:`${t('proyectos.p2')}`,
+       description: `${t('proyectos.descrip_p2')}`,
        image:'/projects/trainer.webp',
        tags:[TAGS.REACT, TAGS.TAILWIND, TAGS.TYPESCRIPT]
     },
     {
-       title:'Monitor de control industrial',
-       description: 'Sistema de telemetría y control bidireccional diseñado para digitalizar entornos industriales. Se implemento una arquitectura de 5 capas que transforma señales de campo (Modbus RTU/RS485) en datos de nube, utilizando OPC UA como estándar de interoperabilidad y MQTT para la propagación escalable. La solución permite la supervisión en tiempo real y el control de actuadores desde una interfaz web reactiva utilizando WebSocket, eliminando los puntos ciegos de información en una planta.',
+       title:`${t('proyectos.p3')}`,
+       description: `${t('proyectos.descrip_p3')}`,
        github: 'https://github.com/VainstubTomas/Trabajo_Protocolos_Comunicacion_Industrial.git',
        image:'/projects/pci.webp',
        tags:[TAGS.PYTHON, TAGS.CPP, TAGS.JAVASCRIPT]
     },
     {
-       title:'Landing page IvolutionX',
-       description: 'Landing page corporativa desarrollada para Ivolution, enfocada en presentar de forma clara y efectiva las soluciones de la empresa.',
+       title:`${t('proyectos.p4')}`,
+       description: `${t('proyectos.descrip_p4')}`,
        link:'https://ivolutionx.com/',
        github: '#',
        image:'/projects/ivolutionX.webp',
