@@ -1,24 +1,29 @@
+---
+import { useTranslations, getLangFromUrl } from "../i18n/utils"
 
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
 
 <footer class="rounded-lg shadow m-4 bg-black/20 backdrop-blur-lg w-full xl:w-[1120px] mx-auto mb-10">
     <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
-      <span class="text-sm text-body sm:text-center opacity-60">© 2025 Tomás Vainstub. Todos los derechos reservados.
+      <span class="text-sm text-body sm:text-center opacity-60">© 2025 Tomás Vainstub. {t('footer.derechos')}.
     </span>
     <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-body sm:mt-0">
         <li>
-            <a href="#inicio" class="hover:underline me-4 md:me-6">Inicio</a>
+            <a href="#inicio" class="hover:underline me-4 md:me-6">{t('footer.inicio')}</a>
         </li>
         <li>
-            <a href="#experiencia" class="hover:underline me-4 md:me-6">Experiencia</a>
+            <a href="#experiencia" class="hover:underline me-4 md:me-6">{t('footer.exp')}</a>
         </li>
         <li>
-            <a href="#proyectos" class="hover:underline me-4 md:me-6">Proyectos</a>
+            <a href="#proyectos" class="hover:underline me-4 md:me-6">{t('footer.proyectos')}</a>
         </li>
         <li>
-            <a href="#sobre-mi" class="hover:underline me-4 md:me-6">Sobre Mi</a>
+            <a href="#sobre-mi" class="hover:underline me-4 md:me-6">{t('footer.sobremi')}</a>
         </li>
         <li>
-            <a href="#contacto" class="hover:underline me-4 md:me-6">Contacto</a>
+            <a href="#contacto" class="hover:underline me-4 md:me-6">{t('footer.contacto')}</a>
         </li>
     </ul>
     </div>
