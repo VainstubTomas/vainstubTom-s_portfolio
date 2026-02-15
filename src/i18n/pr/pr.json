@@ -37,7 +37,10 @@
     "sobremi.texto2": "Atualmente aplico esses conhecimentos para desenvolver soluções ótimas em ambientes corporativos combinando boas práticas de desenvolvimento com uma visão analítica para resolução de problemas.",
 
     "contacto.titulo": "Contato",
-    "contacto.texto": "Com o objetivo de manter uma comunicação ordenada e eficiente, centralizo todas as interações profissionais através do meu e-mail. Se desejar discutir potenciais projetos ou requisitos técnicos, por favor entre em contato em vainstubtomas@gmail.com",
+    "contacto.texto": "Com o objetivo de manter uma comunicação ordenada e eficiente, centralizo todas as interações profissionais através do meu e-mail. Se desejar discutir potenciais projetos ou requisitos técnicos, por favor entre em contato em ",
+    "contacto.mail": "vainstubtomas@gmail.com",
+
+    "toast.mail_clipboard": "Correio copiado para a área de transferência",
 
     "footer.derechos": "Todos os direitos reservados",
     "footer.inicio": "Início",

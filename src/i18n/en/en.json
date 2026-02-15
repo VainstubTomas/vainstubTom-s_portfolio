@@ -37,7 +37,10 @@
     "sobremi.texto2": "I currently apply this knowledge to develop optimal solutions in corporate environments combining good development practices with an analytical vision for problem solving.",
 
     "contacto.titulo": "Contact",
-    "contacto.texto": "In order to maintain orderly and efficient communication, I centralize all professional interactions through my email. If you would like to discuss potential projects or technical requirements, please contact me at vainstubtomas@gmail.com",
+    "contacto.texto": "In order to maintain orderly and efficient communication, I centralize all professional interactions through my email. If you would like to discuss potential projects or technical requirements, please contact me at ",
+    "contacto.mail": "vainstubtomas@gmail.com",
+
+    "toast.mail_clipboard": "Email copied to clipboard",
 
     "footer.derechos": "All rights reserved",
     "footer.inicio": "Home",

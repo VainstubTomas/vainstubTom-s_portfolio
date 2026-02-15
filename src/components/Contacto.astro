@@ -1,5 +1,12 @@
+---
+import { useTranslations, getLangFromUrl } from "../i18n/utils"
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
 <section id="email-contact-section">
-    <h2 class="text-xl lg:text-2xl text-wrap max-w-[700px"><span class="opacity-80">Con el objetivo de mantener una comunicación ordenada y eficiente, centralizo todas las interacciones profesionales a través de mi correo electrónico. Si desea discutir potenciales proyectos o requerimientos técnicos, por favor contácteme en</span><span class="text-yellow-100 hover:text-blue-200 transition-colors cursor-pointer"> vainstubtomas@gmail.com</span></h2>
+    <h2 class="text-xl lg:text-2xl text-wrap max-w-[700px">{t('contacto.texto')}<span class="text-yellow-100 hover:text-blue-200 transition-colors cursor-pointer"> {t('contacto.mail')}</span></h2>
 </section>
 
 <script>
@@ -9,12 +16,12 @@
 
     const supportEmail = 'vainstubtomas@gmail.com';
 
-    const copyEmailToClipboard = async (email: string) => {
+    const copyEmailToClipboard = async (email: string, toastText: string) => {
         try {
             await navigator.clipboard.writeText(email);
             // @ts-ignore
             Toastify({
-                text: "Correo copiado al portapapeles",
+                text: toastText,
                 className: "emailClipboard",
                 gravity: "bottom",
                 style: {
@@ -29,9 +36,10 @@
     document.addEventListener('DOMContentLoaded', () => {
         const emailPill = document.getElementById('email-contact-section');
         if (emailPill) {
+            const toastText = emailPill.dataset.toastText || 'Email copied';
             emailPill.addEventListener('click', (e) => {
                 e.preventDefault();
-                copyEmailToClipboard(supportEmail);
+                copyEmailToClipboard(supportEmail, toastText);
             });
         }
     });

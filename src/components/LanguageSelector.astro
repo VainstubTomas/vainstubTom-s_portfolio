@@ -13,20 +13,18 @@ const languages = [
 
 <div class="relative language-selector">
   <button
-    id="lang-toggle"
-    class="flex items-center gap-2 px-3 py-2 rounded-lg opacity-70 hover:opacity-100 transition-all duration-300 hover:bg-white/10"
+    class="lang-toggle flex items-center gap-2 px-3 py-2 rounded-lg opacity-70 hover:opacity-100 transition-all duration-300 hover:bg-white/10"
     aria-label="Select language"
   >
     <Globe class="size-5" />
     <span class="hidden sm:inline">{currentLang}</span>
-    <svg class="size-4 transition-transform duration-300" id="lang-arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <svg class="lang-arrow size-4 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
     </svg>
   </button>
 
   <div
-    id="lang-menu"
-    class="absolute top-full mt-2 right-0 bg-black/95 backdrop-blur-lg rounded-lg shadow-lg border border-white/10 hidden min-w-[160px]"
+    class="lang-menu absolute top-full mt-2 right-0 bg-black/95 backdrop-blur-lg rounded-lg shadow-lg border border-white/10 hidden min-w-[160px]"
   >
     {languages.map(lang => (
       <a
@@ -42,31 +40,34 @@ const languages = [
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const toggle = document.getElementById('lang-toggle');
-    const menu = document.getElementById('lang-menu');
-    const arrow = document.getElementById('lang-arrow');
-    let isOpen = false;
+    document.querySelectorAll('.language-selector').forEach(selector => {
+      const toggle = selector.querySelector('.lang-toggle');
+      const menu = selector.querySelector('.lang-menu');
+      const arrow = selector.querySelector('.lang-arrow');
+      let isOpen = false;
 
-    toggle?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    isOpen = !isOpen;
+      toggle?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        isOpen = !isOpen;
 
-    if (isOpen) {
-        menu?.classList.remove('hidden');
-        arrow?.style.setProperty('transform', 'rotate(180deg)');
-    } else {
-        menu?.classList.add('hidden');
-        arrow?.style.setProperty('transform', 'rotate(0deg)');
-    }
+        if (isOpen) {
+          menu?.classList.remove('hidden');
+          (arrow as HTMLElement)?.style.setProperty('transform', 'rotate(180deg)');
+        } else {
+          menu?.classList.add('hidden');
+          (arrow as HTMLElement)?.style.setProperty('transform', 'rotate(0deg)');
+        }
+      });
     });
 
-    // Cerrar al hacer clic fuera
+    // Cerrar todos al hacer clic fuera
     document.addEventListener('click', () => {
-    if (isOpen) {
-        isOpen = false;
+      document.querySelectorAll('.language-selector').forEach(selector => {
+        const menu = selector.querySelector('.lang-menu');
+        const arrow = selector.querySelector('.lang-arrow');
         menu?.classList.add('hidden');
-        arrow?.style.setProperty('transform', 'rotate(0deg)');
-    }
+        (arrow as HTMLElement)?.style.setProperty('transform', 'rotate(0deg)');
+      });
     });
-});
+  });
 </script>
