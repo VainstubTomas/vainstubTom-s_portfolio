@@ -1,0 +1,51 @@
+{
+    "nav.inicio": "Início",
+    "nav.exp": "Experiência",
+    "nav.proyectos": "Projetos",
+    "nav.sobremi": "Sobre Mim",
+    "nav.contacto": "Contato",
+
+    "hero.saludo": "Olá, sou Tomás Vainstub",
+    "hero.pastilla": "Disponível",
+    "hero.texto": "+2 anos de experiência na área de TI. De Paraná, Argentina. Estudante avançado de Engenharia da Computação.",
+
+    "experiencia.titulo": "Experiência Profissional",
+    "experiencia.fecha_1": "Jul. 2025 - presente",
+    "experiencia.institución_1": "Instituição - Ivolution",
+    "experiencia.puesto_1": "Desenvolvedor de Software",
+    "experiencia.descrip_1": "Design e implementação de soluções full-stack escaláveis utilizando tecnologias modernas para garantir código limpo e mantível, gerenciando controle de versões e colaboração através de fluxos online.",
+    "experiencia.fecha_2": "Fev. 2024 - presente",
+    "experiencia.institución_2": "Instituição - Ivolution",
+    "experiencia.puesto_2": "Administrador de Serviço Técnico",
+    "experiencia.descrip_2": "Fornecer suporte técnico ao cliente para problemas ou dúvidas sobre o software ou hardware da empresa. Fornecer feedback à área de desenvolvimento, além de suporte e soluções. Manter estoque de produtos e materiais. Testar produtos finais antes da venda.",
+
+    "proyectos.title": "Projetos",
+    "proyectos.nuevo": "Carregando novo projeto",
+    "proyectos.p1": "Portfólio de Tomás Vainstub",
+    "proyectos.descrip_p1": "Site pessoal desenvolvido com Astro e Tailwind CSS para mostrar projetos, experiência e habilidades em desenvolvimento de software.",
+    "proyectos.p2": "Landing Page Ivolution Trainer",
+    "proyectos.descrip_p2": "Landing page corporativa desenvolvida para Ivolution, focada em apresentar a nova plataforma Ivolution Trainer que fornecerá uma nova cara à instituição e melhorias, bem como novas funcionalidades aos seus usuários.",
+    "proyectos.p3": "Monitor de Controle Industrial",
+    "proyectos.descrip_p3": "Sistema de telemetria e controle bidirecional projetado para digitalizar ambientes industriais. Foi implementada uma arquitetura de 5 camadas que transforma sinais de campo (Modbus RTU/RS485) em dados de nuvem, usando OPC UA como padrão de interoperabilidade e MQTT para propagação escalável. A solução permite supervisão em tempo real e controle de atuadores a partir de uma interface web reativa usando WebSocket, eliminando pontos cegos de informação em uma planta.",
+    "proyectos.p4": "Landing Page IvolutionX",
+    "proyectos.descrip_p4": "Landing page corporativa desenvolvida para Ivolution, focada em apresentar as soluções da empresa de forma clara e eficaz.",
+
+    "sobremi.titulo": "Sobre Mim",
+    "sobremi.texto1": "Desenvolvedor de Software com mentalidade de engenheiro especializado no design e implementação de sistemas integrais, com forte foco em Backend e Internet das Coisas Industrial (IIoT)",
+    "sobremi.stack": "Minha stack tecnológica principal inclui",
+    "sobremi.herramientas_pastilla": "Ferramentas",
+    "sobremi.texto2": "Atualmente aplico esses conhecimentos para desenvolver soluções ótimas em ambientes corporativos combinando boas práticas de desenvolvimento com uma visão analítica para resolução de problemas.",
+
+    "contacto.titulo": "Contato",
+    "contacto.texto": "Com o objetivo de manter uma comunicação ordenada e eficiente, centralizo todas as interações profissionais através do meu e-mail. Se desejar discutir potenciais projetos ou requisitos técnicos, por favor entre em contato em ",
+    "contacto.mail": "vainstubtomas@gmail.com",
+
+    "toast.mail_clipboard": "Correio copiado para a área de transferência",
+
+    "footer.derechos": "Todos os direitos reservados",
+    "footer.inicio": "Início",
+    "footer.exp": "Experiência",
+    "footer.proyectos": "Projetos",
+    "footer.sobremi": "Sobre Mim",
+    "footer.contacto": "Contato"
+}

@@ -1,18 +1,22 @@
 ---
 import ExperienceItem from "./ExperienceItem.astro"
+import { useTranslations, getLangFromUrl } from "../i18n/utils"
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const XP = [
     {
-       date: "Jul. 2025 - actualidad.",
-       company: "Institución - Ivolution",
-        title:"Desarrollador de software.",
-        description:"Diseño e implementación de soluciones full-stack escalables utilizando tecnologías modernas para asegurar un código limpio y mantenible, gestionando a su vez el control de versiones y la colaboración mediante flujos en linea.", 
+        date: `${t('experiencia.fecha_1')}`,
+        company: `${t('experiencia.institución_1')}`,
+        title:`${t('experiencia.puesto_1')}`,
+        description:`${t('experiencia.descrip_1')}`,
     },
     {
-        date: "Feb. 2024 - actualidad.",
-        company: "Institución - Ivolution",
-        title:"Administrador de Servicio Técnico.",
-        description:"Brindar apoyo tecnico al cliente ante problemas o dudas sobre el software o hardware de la empresa. Proveer feedback al área de desarrollo además de brindar apoyo y soluciones. Mantener stock de productos y materiales. Testear productos finales previo a su venta.",
+        date: `${t('experiencia.fecha_2')}`,
+        company: `${t('experiencia.institución_2')}`,
+        title:`${t('experiencia.puesto_2')}`,
+        description:`${t('experiencia.descrip_2')}`,
     },
 ]
 ---
