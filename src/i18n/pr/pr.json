@@ -4,6 +4,7 @@
     "nav.proyectos": "Projetos",
     "nav.sobremi": "Sobre Mim",
     "nav.contacto": "Contato",
+    "nav.cv": "Currículo",
 
     "hero.saludo": "Olá, sou Tomás Vainstub",
     "hero.pastilla": "Disponível",
@@ -47,5 +48,6 @@
     "footer.exp": "Experiência",
     "footer.proyectos": "Projetos",
     "footer.sobremi": "Sobre Mim",
-    "footer.contacto": "Contato"
+    "footer.contacto": "Contato",
+    "footer.cv": "Currículo"
 }
