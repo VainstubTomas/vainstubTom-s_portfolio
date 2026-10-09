@@ -8,8 +8,12 @@ def utcnow(): return datetime.now(timezone.utc)
 class Project(Base):
     __tablename__ = "projects"
     id: Mapped[int] = mapped_column(primary_key=True)
-    title: Mapped[str]
-    description: Mapped[str]
+    title_es: Mapped[str]
+    title_en: Mapped[str]
+    title_pr: Mapped[str]
+    description_es: Mapped[str]
+    description_en: Mapped[str]
+    description_pr: Mapped[str]
     link: Mapped[str | None]
     github: Mapped[str | None]
     image: Mapped[str | None]
