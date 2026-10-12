@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from app import models
 from app.database import Base, engine
-from app.routers import projects
+from app.routers import projects, resume
 
 app = FastAPI()
 
@@ -13,3 +13,4 @@ def health():
 
 # Include API routers
 app.include_router(projects.router)
+app.include_router(resume.router)
