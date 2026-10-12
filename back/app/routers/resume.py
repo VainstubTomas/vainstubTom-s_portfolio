@@ -20,7 +20,24 @@ def replace_resume(file: UploadFile):
         raise HTTPException(status_code=400, detail="El archivo no es un PDF válido")
     file.file.seek(0)
 
-    return {"detail": "validaciones ok"}
+    RESUME_PATH.parent.mkdir(exist_ok=True)
+    tmp = RESUME_PATH.with_suffix(".pdf.tmp")
+    max_bytes = settings.MAX_PDF_MB * 1024 * 1024
+    total = 0
+
+    with open(tmp, "wb") as out:
+        while chunk := file.file.read(1024 * 1024):
+            total += len(chunk)
+            if total > max_bytes:
+                break
+            out.write(chunk)
+
+    if total > max_bytes:
+        tmp.unlink()
+        raise HTTPException(status_code=413, detail=f"El PDF supera {settings.MAX_PDF_MB} MB")
+
+    os.replace(tmp, RESUME_PATH)
+    return {"detail": "CV actualizado"}
 
 
 @router.get("")
