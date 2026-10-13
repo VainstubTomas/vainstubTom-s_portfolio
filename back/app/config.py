@@ -10,6 +10,8 @@ class Settings(BaseSettings):
     SUPABASE_URL: str = ""
     SUPABASE_SERVICE_KEY: str = ""
     SUPABASE_BUCKET: str = "resume"
+    SUPABASE_IMAGES_BUCKET: str = "projects"
+    MAX_IMAGE_MB: int = 3
     NETLIFY_BUILD_HOOK_URL: str = ""
 
     model_config = SettingsConfigDict(env_file=".env")

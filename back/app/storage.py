@@ -32,3 +32,20 @@ def download_pdf() -> bytes | None:
         return None
     r.raise_for_status()
     return r.content
+
+
+def public_image_url(name: str) -> str:
+    return f"{settings.SUPABASE_URL}/storage/v1/object/public/{settings.SUPABASE_IMAGES_BUCKET}/{name}"
+
+
+def upload_image(name: str, content: bytes, content_type: str) -> str:
+    """Sube una imagen al bucket público y devuelve su URL pública."""
+    url = f"{settings.SUPABASE_URL}/storage/v1/object/{settings.SUPABASE_IMAGES_BUCKET}/{name}"
+    r = httpx.post(
+        url,
+        headers={**_auth_headers(), "Content-Type": content_type, "x-upsert": "true"},
+        content=content,
+        timeout=30,
+    )
+    r.raise_for_status()
+    return public_image_url(name)
