@@ -1,5 +1,6 @@
 import os
 os.environ["DATABASE_URL"] = "sqlite://"
+os.environ["STORAGE_BACKEND"] = "local"
 
 import pytest
 from fastapi.testclient import TestClient
