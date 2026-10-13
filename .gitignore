@@ -22,3 +22,13 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Python / back
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.env.*
+!.env.example
+*.db
+back/storage/*.pdf
