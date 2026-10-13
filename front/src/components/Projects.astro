@@ -47,7 +47,8 @@ const TAGS = {
 const titleKey = `title_${lang}` as const;
 const descKey = `description_${lang}` as const;
 
-const projects = (await getProjects()).map((p) => ({
+// El más reciente (id mayor) primero.
+const projects = [...(await getProjects())].sort((a, b) => b.id - a.id).map((p) => ({
     title: p[titleKey],
     description: p[descKey],
     image: p.image,
