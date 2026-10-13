@@ -5,9 +5,9 @@ class ProjectCreate(BaseModel):
     title_es: str = Field(min_length=1, max_length=100)
     title_en: str = Field(min_length=1, max_length=100)
     title_pr: str = Field(min_length=1, max_length=100)
-    description_es: str = Field(min_length=1, max_length=300)
-    description_en: str = Field(min_length=1, max_length=300)
-    description_pr: str = Field(min_length=1, max_length=300)
+    description_es: str = Field(min_length=1, max_length=800)
+    description_en: str = Field(min_length=1, max_length=800)
+    description_pr: str = Field(min_length=1, max_length=800)
     link: HttpUrl | None = None
     github: HttpUrl | None = None
     image: str | None = None
@@ -17,9 +17,9 @@ class ProjectUpdate(BaseModel):
     title_es: str | None = Field(default=None, min_length=1, max_length=100)
     title_en: str | None = Field(default=None, min_length=1, max_length=100)
     title_pr: str | None = Field(default=None, min_length=1, max_length=100)
-    description_es: str | None = Field(default=None, min_length=1, max_length=300)
-    description_en: str | None = Field(default=None, min_length=1, max_length=300)
-    description_pr: str | None = Field(default=None, min_length=1, max_length=300)
+    description_es: str | None = Field(default=None, min_length=1, max_length=800)
+    description_en: str | None = Field(default=None, min_length=1, max_length=800)
+    description_pr: str | None = Field(default=None, min_length=1, max_length=800)
     link: HttpUrl | None = None
     github: HttpUrl | None = None
     image: str | None = None
