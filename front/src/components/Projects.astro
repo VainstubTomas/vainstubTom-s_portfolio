@@ -1,5 +1,6 @@
 ---
 import { useTranslations, getLangFromUrl } from "../i18n/utils"
+import { getProjects } from "../lib/api";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -39,42 +40,21 @@ const TAGS = {
     }
 }
 
-const PROJECTS = [
-    {
-       title:`${t('proyectos.p1')}`,
-       description: `${t('proyectos.descrip_p1')}`,
-       //TODO: agregar link,
-       link:'#',
-       github: 'https://github.com/VainstubTomas/vainstubTom-s_portfolio.git',
-       image:'/projects/portfolio.webp',
-       tags:[TAGS.ASTRO, TAGS.TAILWIND]
-    },
-    {
-       title:`${t('proyectos.p2')}`,
-       description: `${t('proyectos.descrip_p2')}`,
-       image:'/projects/trainer.webp',
-       tags:[TAGS.REACT, TAGS.TAILWIND, TAGS.TYPESCRIPT]
-    },
-    {
-       title:`${t('proyectos.p3')}`,
-       description: `${t('proyectos.descrip_p3')}`,
-       github: 'https://github.com/VainstubTomas/Trabajo_Protocolos_Comunicacion_Industrial.git',
-       image:'/projects/pci.webp',
-       tags:[TAGS.PYTHON, TAGS.CPP, TAGS.JAVASCRIPT]
-    },
-    {
-       title:`${t('proyectos.p4')}`,
-       description: `${t('proyectos.descrip_p4')}`,
-       link:'https://ivolutionx.com/',
-       github: '#',
-       image:'/projects/ivolutionX.webp',
-       tags:[TAGS.NEXT, TAGS.REACT]
-    }
-]
+const titleKey = `title_${lang}` as const;
+const descKey = `description_${lang}` as const;
+
+const projects = (await getProjects()).map((p) => ({
+    title: p[titleKey],
+    description: p[descKey],
+    image: p.image,
+    tags: p.tags
+        .map((name) => Object.values(TAGS).find((t) => t.name === name))
+        .filter((t) => t !== undefined),
+}));
 ---
 
 {
-    PROJECTS.map(({title, description, tags, image})=>(
+    projects.map(({title, description, tags, image})=>(
         <article class="mb-15">
             <h3 class="text-2xl font-semibold text-yellow-200 mb-2">{title}</h3>
             <p class="text-lg mb-4 text-pretty">{description}</p>
