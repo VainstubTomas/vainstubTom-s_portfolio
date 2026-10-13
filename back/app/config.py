@@ -10,6 +10,7 @@ class Settings(BaseSettings):
     SUPABASE_URL: str = ""
     SUPABASE_SERVICE_KEY: str = ""
     SUPABASE_BUCKET: str = "resume"
+    NETLIFY_BUILD_HOOK_URL: str = ""
 
     model_config = SettingsConfigDict(env_file=".env")
 

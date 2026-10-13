@@ -1,9 +1,10 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from app.database import get_db
 from app.models import Project
+from app.netlify import trigger_rebuild
 from app.schemas import ProjectCreate, ProjectUpdate, ProjectOut
 from app.security import verify_api_key
 
@@ -21,7 +22,7 @@ def get_project_or_404(db: Session, project_id: int) -> Project:
     status_code=201,
     dependencies=[Depends(verify_api_key)],
 )
-def create_project(payload: ProjectCreate, db: Session = Depends(get_db)):
+def create_project(payload: ProjectCreate, background: BackgroundTasks, db: Session = Depends(get_db)):
     project = Project(
         title_es=payload.title_es,
         title_en=payload.title_en,
@@ -37,6 +38,7 @@ def create_project(payload: ProjectCreate, db: Session = Depends(get_db)):
     db.add(project)
     db.commit()
     db.refresh(project)
+    background.add_task(trigger_rebuild)
     return project
 
 @router.get("/", response_model=list[ProjectOut])
@@ -53,7 +55,7 @@ def get_project(project_id: int, db: Session = Depends(get_db)):
     response_model=ProjectOut,
     dependencies=[Depends(verify_api_key)],
 )
-def update_project(project_id: int, payload: ProjectUpdate, db: Session = Depends(get_db)):
+def update_project(project_id: int, payload: ProjectUpdate, background: BackgroundTasks, db: Session = Depends(get_db)):
     project = get_project_or_404(db, project_id)
     data = payload.model_dump(exclude_unset=True)
     for field, value in data.items():
@@ -64,6 +66,7 @@ def update_project(project_id: int, payload: ProjectUpdate, db: Session = Depend
         setattr(project, field, value)
     db.commit()
     db.refresh(project)
+    background.add_task(trigger_rebuild)
     return project
 
 @router.delete(
@@ -71,7 +74,8 @@ def update_project(project_id: int, payload: ProjectUpdate, db: Session = Depend
     status_code=204,
     dependencies=[Depends(verify_api_key)],
 )
-def delete_project(project_id: int, db: Session = Depends(get_db)):
+def delete_project(project_id: int, background: BackgroundTasks, db: Session = Depends(get_db)):
     project = get_project_or_404(db, project_id)
     db.delete(project)
     db.commit()
+    background.add_task(trigger_rebuild)

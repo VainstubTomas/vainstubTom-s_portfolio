@@ -2,18 +2,19 @@ import os
 import httpx
 from pathlib import Path
 
-from fastapi import APIRouter, Depends, HTTPException, UploadFile
+from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, UploadFile
 from fastapi.responses import FileResponse, Response
 
 from app import storage
 from app.config import settings
+from app.netlify import trigger_rebuild
 from app.security import verify_api_key
 
 router = APIRouter(prefix="/resume", tags=["resume"])
 RESUME_PATH = Path(settings.RESUME_PATH)
 
 @router.patch("", dependencies=[Depends(verify_api_key)])
-def replace_resume(file: UploadFile):
+def replace_resume(file: UploadFile, background: BackgroundTasks):
     if file.content_type != "application/pdf":
         raise HTTPException(status_code=415, detail="El archivo debe ser un PDF")
 
@@ -48,6 +49,7 @@ def replace_resume(file: UploadFile):
     finally:
         tmp.unlink(missing_ok=True)
 
+    background.add_task(trigger_rebuild)
     return {"detail": "CV actualizado"}
 
 
