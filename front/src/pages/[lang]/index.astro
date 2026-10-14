@@ -33,11 +33,11 @@ const t = useTranslations(lang);
 <Layout lang={lang} title={t('meta.title')} description={t('meta.description')}>
 	<main>
 
-		<!-- Solo el hero lleva el degradé; se desvanece hacia el negro del resto de la web. -->
+		<!-- TEMP: azul (blue-900) en vez de --color-brand. Solo el hero lleva el degradé; se desvanece hacia el negro del resto de la web. -->
 		<div class="relative isolate px-4">
 			<div
 				aria-hidden="true"
-				class="absolute inset-0 -z-10 [background:radial-gradient(125%_100%_at_50%_10%,#000_40%,var(--color-brand)_100%)] [mask-image:linear-gradient(to_bottom,#000_60%,transparent)]"
+				class="absolute inset-0 -z-10 [background:radial-gradient(125%_100%_at_50%_10%,#000_40%,var(--color-blue-900)_100%)] [mask-image:linear-gradient(to_bottom,#000_60%,transparent)]"
 			></div>
 		<Container class="py-44 pb-30" id="inicio">
 			<img class="rounded-full w-18 h-18 mb-8" src="/profile.jpeg" alt={t('hero.foto_alt')} width="72" height="72">
