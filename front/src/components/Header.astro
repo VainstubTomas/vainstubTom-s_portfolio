@@ -6,36 +6,46 @@ import { NAV_LINKS } from "../lib/nav"
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const linkClass = "opacity-70 hover:opacity-100 transition-opacity duration-300";
-const cvClass = "inline-block bg-accent text-black font-bold text-lg px-7 py-3 rounded-lg no-underline transition-colors duration-300 hover:bg-black hover:text-white";
+const linkClass = "opacity-80 hover:opacity-100 transition-[opacity,transform] duration-150 ease-out origin-bottom";
+const cvClass = "inline-block bg-accent/15 text-accent font-semibold border border-accent/40 shadow-[inset_0_1px_0_rgb(255_255_255/0.35),0_0_20px_rgb(204_255_0/0.12)] rounded-xl no-underline transition-colors duration-300 hover:bg-accent/30 hover:border-accent/70 px-5 py-2";
 ---
 
-<header class="flex justify-between items-center px-4 py-5 w-full fixed top-0 left-0 right-0 bg-black/80 backdrop-blur-lg z-50">
-    <!-- Menú desktop -->
-    <nav class="hidden md:flex flex-row gap-x-10 mx-auto items-center">
-        <LanguageSelector />
-        {NAV_LINKS.map(({href, key}) => <a href={href} class={linkClass}>{t(key)}</a>)}
-        <a href="/files/resume.pdf" target="_blank" class={cvClass}>{t('nav.cv')}</a>
-    </nav>
-
-    <!-- Botón hamburguesa (solo móvil) -->
-    <button id="menu-toggle" class="md:hidden flex flex-col gap-1.5 p-2 ml-auto z-50" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
-        <span class="menu-line block w-6 h-0.5 bg-white transition-all duration-300"></span>
-        <span class="menu-line block w-6 h-0.5 bg-white transition-all duration-300"></span>
-        <span class="menu-line block w-6 h-0.5 bg-white transition-all duration-300"></span>
-    </button>
-
-    <!-- Menú móvil -->
-    <nav id="mobile-menu" class="md:hidden fixed top-[72px] left-0 right-0 bg-black/95 backdrop-blur-lg hidden">
-        <div class="flex flex-col items-center gap-6 py-8">
+<header class="fixed top-4 inset-x-0 z-50 px-4 flex justify-center pointer-events-none">
+    <div
+        id="navbar"
+        data-dock
+        class="glass pointer-events-auto relative w-full md:w-fit rounded-2xl transition-[background-color,padding] duration-300 data-[scrolled=true]:bg-black/40"
+    >
+        <!-- Dock desktop -->
+        <nav class="hidden md:flex flex-row gap-x-6 items-center px-5 py-2.5">
             <LanguageSelector />
-            {NAV_LINKS.map(({href, key}) => <a href={href} class={`mobile-link text-lg ${linkClass}`}>{t(key)}</a>)}
-            <a href="/files/resume.pdf" target="_blank" class={cvClass}>{t('nav.cv')}</a>
+            {NAV_LINKS.map(({href, key}) => <a href={href} data-dock-item class={linkClass}>{t(key)}</a>)}
+            <a href="/files/resume.pdf" target="_blank" rel="noopener noreferrer" class={cvClass}>{t('nav.cv')}</a>
+        </nav>
+
+        <!-- Barra móvil -->
+        <div class="md:hidden flex items-center justify-between pl-5 pr-2 py-2">
+            <span class="font-semibold text-sm opacity-90">Tomás Vainstub</span>
+            <button id="menu-toggle" class="flex flex-col gap-1.5 p-2" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+                <span class="menu-line block w-6 h-0.5 bg-white transition-all duration-300"></span>
+                <span class="menu-line block w-6 h-0.5 bg-white transition-all duration-300"></span>
+                <span class="menu-line block w-6 h-0.5 bg-white transition-all duration-300"></span>
+            </button>
         </div>
-    </nav>
+
+        <!-- Menú móvil -->
+        <nav id="mobile-menu" class="md:hidden absolute top-full mt-2 inset-x-0 glass rounded-2xl hidden bg-black/60">
+            <div class="flex flex-col items-center gap-6 py-8">
+                <LanguageSelector />
+                {NAV_LINKS.map(({href, key}) => <a href={href} class={`mobile-link text-lg opacity-80 hover:opacity-100 transition-opacity duration-300`}>{t(key)}</a>)}
+                <a href="/files/resume.pdf" target="_blank" rel="noopener noreferrer" class="inline-block bg-accent/15 text-accent font-semibold border border-accent/40 shadow-[inset_0_1px_0_rgb(255_255_255/0.35),0_0_20px_rgb(204_255_0/0.12)] rounded-xl no-underline transition-colors duration-300 hover:bg-accent/30 hover:border-accent/70 text-lg px-7 py-3">{t('nav.cv')}</a>
+            </div>
+        </nav>
+    </div>
 </header>
 
 <script>
+    const navbar = document.getElementById('navbar');
     const toggle = document.getElementById('menu-toggle');
     const menu = document.getElementById('mobile-menu');
     const [l1, l2, l3] = Array.from(document.querySelectorAll<HTMLElement>('.menu-line'));
@@ -54,4 +64,9 @@ const cvClass = "inline-block bg-accent text-black font-bold text-lg px-7 py-3 r
     document.querySelectorAll('.mobile-link').forEach((link) => {
         link.addEventListener('click', () => setOpen(false));
     });
+
+    // Al hacer scroll la barra gana opacidad para seguir legible sobre el contenido.
+    const onScroll = () => navbar?.setAttribute('data-scrolled', String(window.scrollY > 40));
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
 </script>

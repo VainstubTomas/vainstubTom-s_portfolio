@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+/* Efecto "glass" estilo macOS (dock / barras flotantes). */
+@utility glass {
+    background-color: rgb(255 255 255 / 0.1);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid rgb(255 255 255 / 0.18);
+    box-shadow: 0 8px 32px rgb(0 0 0 / 0.4), inset 0 1px 0 rgb(255 255 255 / 0.2);
+}
+
 @theme {
     --color-accent: #ccff00;
     --color-brand: #6633ee;
@@ -32,7 +41,7 @@ body {
 
 /* Compensa el header fijo al saltar a una sección (reemplaza el JS de offset). */
 section[id] {
-    scroll-margin-top: 5rem;
+    scroll-margin-top: 6rem;
 }
 
 /* Reveal al hacer scroll: solo se oculta si hay JS (clase .js en <html>),

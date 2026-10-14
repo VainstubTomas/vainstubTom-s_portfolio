@@ -42,6 +42,32 @@ const { title, description, lang } = Astro.props
 			document.querySelectorAll('[data-reveal]').forEach((el) => observer.observe(el));
 		</script>
 		<script>
+			// Efecto dock de macOS: los [data-dock-item] se agrandan según la cercanía del puntero.
+			const canHover = matchMedia('(hover: hover) and (pointer: fine)').matches;
+			const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+			const MAX_SCALE = 1.45; // escala del ítem justo bajo el puntero
+			const RADIUS = 120;     // px de influencia a cada lado
+
+			if (canHover && !reduceMotion) {
+				document.querySelectorAll<HTMLElement>('[data-dock]').forEach((dock) => {
+					const items = Array.from(dock.querySelectorAll<HTMLElement>('[data-dock-item]'));
+					const reset = () => items.forEach((el) => (el.style.transform = ''));
+
+					dock.addEventListener('pointermove', (e) => {
+						items.forEach((el) => {
+							const r = el.getBoundingClientRect();
+							if (!r.width) return;
+							const dist = Math.abs(e.clientX - (r.left + r.width / 2));
+							const k = Math.max(0, 1 - dist / RADIUS);
+							const scale = 1 + (MAX_SCALE - 1) * k * k;
+							el.style.transform = `scale(${scale}) translateY(${-(scale - 1) * 6}px)`;
+						});
+					});
+					dock.addEventListener('pointerleave', reset);
+				});
+			}
+		</script>
+		<script>
 			// Cualquier elemento con [data-copy-email] copia el mail y avisa con un toast.
 			// @ts-ignore
 			import Toastify from 'toastify-js';

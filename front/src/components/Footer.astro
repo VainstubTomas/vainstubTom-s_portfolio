@@ -6,22 +6,22 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<footer class="rounded-lg shadow mx-4 xl:mx-auto mb-10 bg-black/20 backdrop-blur-lg xl:w-[1120px]">
-    <div class="w-full mx-auto p-5 md:p-6 flex flex-col md:flex-row items-center justify-between gap-6">
-      <span class="text-sm text-body text-center md:text-left opacity-60">
+<footer class="px-4 mb-8 flex justify-center">
+    <div data-dock class="glass w-full md:w-fit rounded-2xl px-6 py-4 md:py-3 flex flex-col md:flex-row items-center gap-4 md:gap-8">
+      <span class="text-sm text-body text-center opacity-60">
           © {new Date().getFullYear()} Tomás Vainstub. {t('footer.derechos')}.
       </span>
 
-      <ul class="flex flex-wrap items-center justify-center md:justify-end gap-x-5 gap-y-4 text-sm font-medium text-body">
+      <ul class="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 text-sm font-medium text-body">
           {NAV_LINKS.map(({href, key}) => (
-              <li><a href={href} class="hover:underline">{t(key)}</a></li>
+              <li><a href={href} data-dock-item class="inline-block opacity-80 hover:opacity-100 transition-[opacity,transform] duration-150 ease-out origin-bottom">{t(key)}</a></li>
           ))}
-          <li class="w-full sm:w-auto mt-2 sm:mt-0 flex justify-center">
+          <li>
               <a
                   href="/files/resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="inline-block bg-accent text-black font-bold text-base md:text-lg px-6 py-2.5 md:px-7 md:py-3 rounded-lg no-underline transition-colors duration-300 hover:bg-black hover:text-white"
+                  class="inline-block bg-accent/15 text-accent font-semibold border border-accent/40 shadow-[inset_0_1px_0_rgb(255_255_255/0.35),0_0_20px_rgb(204_255_0/0.12)] rounded-xl no-underline transition-colors duration-300 hover:bg-accent/30 hover:border-accent/70 px-4 py-1.5"
               >
                   {t('nav.cv')}
               </a>
