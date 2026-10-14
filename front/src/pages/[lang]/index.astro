@@ -14,7 +14,6 @@ import Sobremi from '../../components/Sobremi.astro';
 import Linkedin from '../../components/icons/Linkedin.astro';
 import GitHub from '../../components/icons/GitHub.astro';
 import Mail from '../../components/icons/Mail.astro';
-import Suitcase from '../../components/icons/Suitcase.astro';
 import Code from '../../components/icons/Code.astro';
 import SobreMiIcon from '../../components/icons/SobreMi.astro';
 import ContactIcon from '../../components/icons/Contact.astro'
@@ -67,11 +66,8 @@ const t = useTranslations(lang);
 			<p class="mt-5 text-xl md:text-3xl font-medium text-white/60">{t('intro.subtitulo')}</p>
 		</section>
 
-		<Container id="experiencia" reveal>
-			<h2 class="text-3xl font-semibold mb-8 flex items-center gap-3">
-				<Suitcase class="size-7"/>
-				{t('experiencia.titulo')}
-			</h2>
+		<Container id="experiencia">
+			<h2 data-reveal class="text-4xl md:text-5xl font-bold tracking-tight text-white mb-10">{t('experiencia.titulo')}</h2>
 			<Experience />
 		</Container>
 
