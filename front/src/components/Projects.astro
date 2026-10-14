@@ -18,25 +18,35 @@ const projects = [...(await getProjects())].sort((a, b) => b.id - a.id).map((p) 
 }));
 ---
 
-{
-    projects.map(({title, description, tags, image}, i)=>(
-        <article data-reveal class="mb-15">
-            <h3 class="text-2xl font-semibold text-title mb-2">{title}</h3>
-            <p class="text-lg mb-4 text-pretty">{description}</p>
-            <ul class="flex gap-2 flex-wrap mb-2">
-                {tags.map(tag=>(
-                    <li><TechTag name={tag} /></li>
-                ))}
-            </ul>
-            {image && (
-                <img
-                    class="rounded shadow-2xl shadow-white/10"
-                    src={image}
-                    alt={`${t('proyectos.alt')} ${title}`}
-                    loading={i === 0 ? "eager" : "lazy"}
-                    decoding="async"
+<!-- En escritorio la grilla sobresale 80 px a cada lado (900 px) y el título sigue alineado con el resto. -->
+<ul class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:-mx-20">
+    {
+        projects.map(({title, description, tags, image}, i)=>(
+            <li>
+                <article
+                    data-reveal
+                    class="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-white/[0.08] to-white/[0.02] p-3 backdrop-blur-xl backdrop-saturate-150 shadow-[0_8px_32px_rgb(0_0_0/0.35),inset_0_1px_0_rgb(255_255_255/0.12)] transition-colors duration-300 hover:border-white/20"
                 >
-            )}
-        </article>
-    ))
-}
+                    {image && (
+                        <img
+                            class="aspect-[16/10] w-full rounded-2xl object-cover object-top"
+                            src={image}
+                            alt={`${t('proyectos.alt')} ${title}`}
+                            loading={i < 2 ? "eager" : "lazy"}
+                            decoding="async"
+                        >
+                    )}
+                    <div class="flex flex-1 flex-col p-4 pt-5">
+                        <h3 class="text-2xl font-semibold tracking-tight text-white">{title}</h3>
+                        <p class="mt-3 mb-5 text-base leading-relaxed text-white/65 text-pretty">{description}</p>
+                        <ul class="mt-auto flex flex-wrap gap-2">
+                            {tags.map(tag=>(
+                                <li><TechTag name={tag} /></li>
+                            ))}
+                        </ul>
+                    </div>
+                </article>
+            </li>
+        ))
+    }
+</ul>
