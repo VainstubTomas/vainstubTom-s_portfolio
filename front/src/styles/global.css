@@ -60,3 +60,20 @@ section[id] {
         transform: none;
     }
 }
+
+/* Memoji del hero: solo el antebrazo saluda (pivote en el codo), con pausa entre saludos. */
+@media (prefers-reduced-motion: no-preference) {
+    .memoji-arm {
+        transform-origin: 82.7% 75.2%;
+        animation: wave 4s ease-in-out infinite;
+    }
+}
+
+@keyframes wave {
+    0%, 55%, 100% { transform: rotate(0deg); }
+    10% { transform: rotate(-2deg); }
+    20% { transform: rotate(2deg); }
+    30% { transform: rotate(-2deg); }
+    40% { transform: rotate(2deg); }
+    48% { transform: rotate(-1deg); }
+}

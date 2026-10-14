@@ -40,7 +40,10 @@ const t = useTranslations(lang);
 				class="absolute inset-0 -z-10 [background:radial-gradient(125%_100%_at_50%_10%,#000_40%,var(--color-blue-900)_100%)] [mask-image:linear-gradient(to_bottom,#000_60%,transparent)]"
 			></div>
 		<Container class="pt-20 pb-0!" id="inicio">
-			<img class="rounded-full w-18 h-18 mb-8" src="/profile.jpeg" alt={t('hero.foto_alt')} width="72" height="72">
+			<div class="memoji relative w-24 mb-6 aspect-[260/226]" role="img" aria-label={t('hero.foto_alt')}>
+				<img class="absolute inset-0 size-full" src="/memoji-body.png" alt="" width="260" height="226" fetchpriority="high">
+				<img class="memoji-arm absolute inset-0 size-full" src="/memoji-arm.png" alt="" width="260" height="226" fetchpriority="high">
+			</div>
 			<h1 class="text-white text-3xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10">{t('hero.saludo')}<a
 					href="https://www.linkedin.com/in/vainstubtomas/"
 					target="_blank"
