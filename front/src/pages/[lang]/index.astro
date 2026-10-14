@@ -39,12 +39,12 @@ const t = useTranslations(lang);
 				aria-hidden="true"
 				class="absolute inset-0 -z-10 [background:radial-gradient(125%_100%_at_50%_10%,#000_40%,var(--color-blue-900)_100%)] [mask-image:linear-gradient(to_bottom,#000_60%,transparent)]"
 			></div>
-		<Container class="pt-20 pb-0!" id="inicio">
+		<Container class="pt-20 pb-40! text-center" id="inicio">
 			<HeroIdentity/>
-			<h1 class="text-white text-3xl md:text-4xl lg:text-5xl font-bold pb-3">{t('hero.saludo')}</h1>
+			<h1 class="text-white text-3xl md:text-4xl lg:text-5xl font-bold pb-3">{t('hero.nombre')}</h1>
 			<p class="text-xl lg:text-3xl font-medium text-white/90">{t('hero.rol')}</p>
 			<p class="text-base lg:text-xl text-white/60 mt-1">{t('hero.estudio')}</p>
-			<nav class="flex gap-2 py-5 flex-wrap">
+			<nav class="flex gap-4 pt-10 pb-5 flex-wrap justify-center">
 				<SocialPill href="https://www.linkedin.com/in/vainstubtomas/">
 					<Linkedin class="size-4 lg:size-6"/>
 					LinkedIn

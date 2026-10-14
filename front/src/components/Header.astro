@@ -7,7 +7,7 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const linkClass = "opacity-80 hover:opacity-100 transition-[opacity,transform] duration-150 ease-out origin-bottom";
-const cvClass = "inline-block bg-accent/15 text-accent font-semibold border border-accent/40 shadow-[inset_0_1px_0_rgb(255_255_255/0.35),0_0_20px_rgb(204_255_0/0.12)] rounded-xl no-underline transition-colors duration-300 hover:bg-accent/30 hover:border-accent/70 px-5 py-2";
+const cvClass = "inline-block bg-white/5 text-white font-medium border border-white/10 shadow-[inset_0_1px_0_rgb(255_255_255/0.15)] rounded-xl no-underline transition-colors duration-300 hover:bg-white/10 hover:border-white/20 px-5 py-2";
 ---
 
 <header class="fixed top-4 inset-x-0 z-50 px-4 flex justify-center pointer-events-none">
@@ -38,7 +38,7 @@ const cvClass = "inline-block bg-accent/15 text-accent font-semibold border bord
             <div class="flex flex-col items-center gap-6 py-8">
                 <LanguageSelector />
                 {NAV_LINKS.map(({href, key}) => <a href={href} class={`mobile-link text-lg opacity-80 hover:opacity-100 transition-opacity duration-300`}>{t(key)}</a>)}
-                <a href="/files/resume.pdf" target="_blank" rel="noopener noreferrer" class="inline-block bg-accent/15 text-accent font-semibold border border-accent/40 shadow-[inset_0_1px_0_rgb(255_255_255/0.35),0_0_20px_rgb(204_255_0/0.12)] rounded-xl no-underline transition-colors duration-300 hover:bg-accent/30 hover:border-accent/70 text-lg px-7 py-3">{t('nav.cv')}</a>
+                <a href="/files/resume.pdf" target="_blank" rel="noopener noreferrer" class="inline-block bg-white/5 text-white font-medium border border-white/10 shadow-[inset_0_1px_0_rgb(255_255_255/0.15)] rounded-xl no-underline transition-colors duration-300 hover:bg-white/10 hover:border-white/20 text-lg px-7 py-3">{t('nav.cv')}</a>
             </div>
         </nav>
     </div>
