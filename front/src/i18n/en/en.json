@@ -24,8 +24,8 @@
     "experiencia.puesto_2": "Technical Service Administrator",
     "experiencia.descrip_2": "Provide technical support to clients for problems or questions about the company's software or hardware. Provide feedback to the development area as well as support and solutions. Maintain stock of products and materials. Test final products before sale.",
 
+    "stack.frase": "Clean, maintainable and scalable code",
     "proyectos.title": "Projects",
-    "proyectos.nuevo": "Loading new project",
     "proyectos.p1": "Tomás Vainstub Portfolio",
     "proyectos.descrip_p1": "Personal website developed with Astro and Tailwind CSS to showcase projects, experience and software development skills.",
     "proyectos.p2": "Ivolution Trainer Landing Page",

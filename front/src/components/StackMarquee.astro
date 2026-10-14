@@ -1,0 +1,40 @@
+---
+import TypeScript from "./icons/stack/TypeScript.astro";
+import Python from "./icons/stack/Python.astro";
+import React from "./icons/stack/React.astro";
+import NodeJs from "./icons/stack/NodeJs.astro";
+import Gcp from "./icons/stack/Gcp.astro";
+import Aws from "./icons/stack/Aws.astro";
+import Docker from "./icons/stack/Docker.astro";
+import Git from "./icons/stack/Git.astro";
+import MongoDb from "./icons/stack/MongoDb.astro";
+
+const STACK = [
+    { name: "TypeScript", Icon: TypeScript },
+    { name: "Python", Icon: Python },
+    { name: "React", Icon: React },
+    { name: "Node.js", Icon: NodeJs },
+    { name: "MongoDB", Icon: MongoDb },
+    { name: "GCP", Icon: Gcp },
+    { name: "AWS", Icon: Aws },
+    { name: "Docker", Icon: Docker },
+    { name: "Git", Icon: Git },
+];
+---
+
+<!-- La pista se repite dos veces y se desplaza -50% para un loop sin saltos. -->
+<div class="marquee overflow-hidden [mask-image:linear-gradient(to_right,transparent,#000_12%,#000_88%,transparent)]">
+    <ul class="marquee-track flex w-max gap-4 py-2">
+        {[0, 1].map((copy) => STACK.map(({ name, Icon }) => (
+            <li
+                class:list={["marquee-item", { "marquee-copy": copy === 1 }]}
+                aria-hidden={copy === 1 ? "true" : undefined}
+            >
+                <span class="flex items-center gap-x-2.5 rounded-full border border-white/10 bg-white/5 py-2 px-5 text-base lg:text-lg text-white/90 backdrop-blur-xl shadow-[inset_0_1px_0_rgb(255_255_255/0.12)]">
+                    <Icon class="size-5 lg:size-6" />
+                    {name}
+                </span>
+            </li>
+        )))}
+    </ul>
+</div>

@@ -4,19 +4,17 @@ import { useTranslations, languages } from '../../i18n/utils';
 
 import HeroIdentity from '../../components/HeroIdentity.astro';
 import SocialPill from '../../components/SocialPill.astro'
+import SectionTitle from '../../components/SectionTitle.astro';
+import StackMarquee from '../../components/StackMarquee.astro';
 import Experience from '../../components/Experience.astro';
 import Container from '../../components/Container.astro'
 import Projects from '../../components/Projects.astro'
-import SkeletonProximoProyecto from '../../components/SkeletonProximoProyecto.astro';
 import Contacto from '../../components/Contacto.astro';
 import Sobremi from '../../components/Sobremi.astro';
 
 import Linkedin from '../../components/icons/Linkedin.astro';
 import GitHub from '../../components/icons/GitHub.astro';
 import Mail from '../../components/icons/Mail.astro';
-import Code from '../../components/icons/Code.astro';
-import SobreMiIcon from '../../components/icons/SobreMi.astro';
-import ContactIcon from '../../components/icons/Contact.astro'
 import { EMAIL } from '../../lib/nav';
 
 export function getStaticPaths() {
@@ -67,32 +65,27 @@ const t = useTranslations(lang);
 		</section>
 
 		<Container id="experiencia">
-			<h2 data-reveal class="text-4xl md:text-5xl font-bold tracking-tight text-white mb-10">{t('experiencia.titulo')}</h2>
+			<SectionTitle>{t('experiencia.titulo')}</SectionTitle>
 			<Experience />
 		</Container>
 
+		<section data-reveal class="-mx-4 pt-24 md:pt-32 pb-40 md:pb-52">
+			<p class="max-w-4xl mx-auto px-4 mb-12 text-center text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.1] text-balance bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent">{t('stack.frase')}</p>
+			<StackMarquee/>
+		</section>
+
 		<Container id="proyectos">
-			<h2 data-reveal class="text-3xl font-semibold mb-8 flex items-center gap-3">
-				<Code class="size-7"/>
-				{t('proyectos.title')}
-			</h2>
-			<SkeletonProximoProyecto/>
+			<SectionTitle>{t('proyectos.title')}</SectionTitle>
 			<Projects/>
 		</Container>
 
 		<Container id="sobre-mi" reveal>
-			<h2 class="text-3xl font-semibold mb-8 flex items-center gap-3">
-				<SobreMiIcon class="size-7"/>
-				{t('sobremi.titulo')}
-			</h2>
+			<SectionTitle>{t('sobremi.titulo')}</SectionTitle>
 			<Sobremi/>
 		</Container>
 
 		<Container id="contacto" reveal>
-			<h2 class="text-3xl font-semibold mb-8 flex items-center gap-3">
-				<ContactIcon class="size-7"/>
-				{t('contacto.titulo')}
-			</h2>
+			<SectionTitle>{t('contacto.titulo')}</SectionTitle>
 			<Contacto/>
 		</Container>
 		</div>
