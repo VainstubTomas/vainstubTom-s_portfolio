@@ -8,7 +8,8 @@
 
     "hero.saludo": "Hola, soy Tomás Vainstub",
     "hero.pastilla": "Disponible",
-    "hero.texto": "+2 años de experiencia en el área informatica. De Paraná, Argentina . Estudiante avanzado de Ingenieria en Computación.",
+    "hero.rol": "Desarrollador de software",
+    "hero.estudio": "Estudiante avanzado de Ingeniería en Computación",
 
     "experiencia.titulo": "Experiencia laboral",
     "experiencia.fecha_1": "Jul. 2025 - actualidad",
