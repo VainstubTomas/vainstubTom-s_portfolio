@@ -1,1 +1,36 @@
 @import "tailwindcss";
+
+@theme {
+    --color-accent: #ccff00;
+    --color-brand: #6633ee;
+    --color-ink: #09090b;
+    --color-title: var(--color-yellow-200);
+}
+
+:root {
+    color-scheme: light dark;
+}
+
+html {
+    font-family: 'Onest Variable', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--color-ink);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+/* Compensa el header fijo al saltar a una sección (reemplaza el JS de offset). */
+section[id] {
+    scroll-margin-top: 5rem;
+}

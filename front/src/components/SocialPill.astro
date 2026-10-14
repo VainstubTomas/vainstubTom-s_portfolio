@@ -1,14 +1,14 @@
 ---
 interface Props {
     href?: string;
-    id?: string;
+    [attr: `data-${string}`]: string | undefined;
 }
 
-const { href, id } = Astro.props;
+const { href, ...rest } = Astro.props;
 ---
 
 <a 
-    id={id}
+    {...rest}
     href={href || '#'}
     target={href && href !== '#' ? '_blank' : undefined}
     rel={href && href !== '#' ? 'noopener noreferrer' : undefined}

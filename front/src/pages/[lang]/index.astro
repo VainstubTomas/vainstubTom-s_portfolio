@@ -1,0 +1,105 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { useTranslations, languages } from '../../i18n/utils';
+
+import Badge from '../../components/Badge.astro';
+import SocialPill from '../../components/SocialPill.astro'
+import Experience from '../../components/Experience.astro';
+import Container from '../../components/Container.astro'
+import Projects from '../../components/Projects.astro'
+import SkeletonProximoProyecto from '../../components/SkeletonProximoProyecto.astro';
+import Contacto from '../../components/Contacto.astro';
+import Sobremi from '../../components/Sobremi.astro';
+
+import Linkedin from '../../components/icons/Linkedin.astro';
+import GitHub from '../../components/icons/GitHub.astro';
+import Mail from '../../components/icons/Mail.astro';
+import Suitcase from '../../components/icons/Suitcase.astro';
+import Code from '../../components/icons/Code.astro';
+import SobreMiIcon from '../../components/icons/SobreMi.astro';
+import ContactIcon from '../../components/icons/Contact.astro'
+import { EMAIL } from '../../lib/nav';
+
+export function getStaticPaths() {
+	return (Object.keys(languages) as (keyof typeof languages)[]).map((lang) => ({
+		params: { lang },
+	}));
+}
+
+const lang = Astro.params.lang as keyof typeof languages;
+const t = useTranslations(lang);
+---
+
+<Layout lang={lang} title={t('meta.title')} description={t('meta.description')}>
+	<main>
+
+		<!-- Solo el hero lleva el degradé; se desvanece hacia el negro del resto de la web. -->
+		<div class="relative isolate px-4">
+			<div
+				aria-hidden="true"
+				class="absolute inset-0 -z-10 [background:radial-gradient(125%_100%_at_50%_10%,#000_40%,var(--color-brand)_100%)] [mask-image:linear-gradient(to_bottom,#000_60%,transparent)]"
+			></div>
+		<Container class="py-44 pb-30" id="inicio">
+			<img class="rounded-full w-18 h-18 mb-8" src="/profile.jpeg" alt={t('hero.foto_alt')} width="72" height="72">
+			<h1 class="text-white text-3xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10">{t('hero.saludo')}<a
+					href="https://www.linkedin.com/in/vainstubtomas/"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="flex justify-center items-center"
+				><Badge>{t('hero.pastilla')}</Badge></a></h1>
+			<h2 class="text-xl lg:text-2xl text-wrap max-w-[700px]">{t('hero.texto')}</h2>
+
+			<nav class="flex gap-2 py-5 flex-wrap">
+				<SocialPill href="https://www.linkedin.com/in/vainstubtomas/">
+					<Linkedin class="size-4 lg:size-6"/>
+					LinkedIn
+				</SocialPill>
+				<SocialPill href="https://github.com/VainstubTomas">
+					<GitHub class="size-4 lg:size-6"/>
+					GitHub
+				</SocialPill>
+				<SocialPill href="#" data-copy-email={EMAIL} data-toast={t('toast.mail_clipboard')}>
+					<Mail class="size-4 lg:size-6"/>
+					{EMAIL}
+				</SocialPill>
+			</nav>
+		</Container>
+		</div>
+
+		<div class="px-4">
+		<Container id="experiencia">
+			<h2 class="text-3xl font-semibold mb-8 flex items-center gap-3">
+				<Suitcase class="size-7"/>
+				{t('experiencia.titulo')}
+			</h2>
+			<Experience />
+		</Container>
+
+		<Container id="proyectos">
+			<h2 class="text-3xl font-semibold mb-8 flex items-center gap-3">
+				<Code class="size-7"/>
+				{t('proyectos.title')}
+			</h2>
+			<SkeletonProximoProyecto/>
+			<Projects/>
+		</Container>
+
+		<Container id="sobre-mi">
+			<h2 class="text-3xl font-semibold mb-8 flex items-center gap-3">
+				<SobreMiIcon class="size-7"/>
+				{t('sobremi.titulo')}
+			</h2>
+			<Sobremi/>
+		</Container>
+
+		<Container id="contacto">
+			<h2 class="text-3xl font-semibold mb-8 flex items-center gap-3">
+				<ContactIcon class="size-7"/>
+				{t('contacto.titulo')}
+			</h2>
+			<Contacto/>
+		</Container>
+		</div>
+
+	</main>
+</Layout>

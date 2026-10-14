@@ -44,10 +44,8 @@
     "toast.mail_clipboard": "Correo copiado al portapapeles",
 
     "footer.derechos": "Todos los derechos reservados",
-    "footer.inicio": "Inicio",
-    "footer.exp": "Experiencia",
-    "footer.proyectos": "Proyectos",
-    "footer.sobremi": "Sobre Mi",
-    "footer.contacto": "Contacto",
-    "footer.cv": "Currículum"
+    "meta.title": "Tomás Vainstub – Desarrollador de software",
+    "meta.description": "Desarrollador de software y estudiante avanzado de Ingeniería en Computación. Interesado en el aprendizaje continuo y el desarrollo de soluciones de software óptimas.",
+    "hero.foto_alt": "Foto de Tomás Vainstub",
+    "proyectos.alt": "Captura de pantalla del proyecto"
 }

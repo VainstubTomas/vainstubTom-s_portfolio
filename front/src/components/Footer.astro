@@ -1,5 +1,6 @@
 ---
 import { useTranslations, getLangFromUrl } from "../i18n/utils"
+import { NAV_LINKS } from "../lib/nav"
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -7,35 +8,22 @@ const t = useTranslations(lang);
 
 <footer class="rounded-lg shadow mx-4 xl:mx-auto mb-10 bg-black/20 backdrop-blur-lg xl:w-[1120px]">
     <div class="w-full mx-auto p-5 md:p-6 flex flex-col md:flex-row items-center justify-between gap-6">
-      
       <span class="text-sm text-body text-center md:text-left opacity-60">
-          © 2025 Tomás Vainstub. {t('footer.derechos')}.
+          © {new Date().getFullYear()} Tomás Vainstub. {t('footer.derechos')}.
       </span>
-      
+
       <ul class="flex flex-wrap items-center justify-center md:justify-end gap-x-5 gap-y-4 text-sm font-medium text-body">
-          <li>
-              <a href="#inicio" class="hover:underline">{t('footer.inicio')}</a>
-          </li>
-          <li>
-              <a href="#experiencia" class="hover:underline">{t('footer.exp')}</a>
-          </li>
-          <li>
-              <a href="#proyectos" class="hover:underline">{t('footer.proyectos')}</a>
-          </li>
-          <li>
-              <a href="#sobre-mi" class="hover:underline">{t('footer.sobremi')}</a>
-          </li>
-          <li>
-              <a href="#contacto" class="hover:underline">{t('footer.contacto')}</a>
-          </li>
+          {NAV_LINKS.map(({href, key}) => (
+              <li><a href={href} class="hover:underline">{t(key)}</a></li>
+          ))}
           <li class="w-full sm:w-auto mt-2 sm:mt-0 flex justify-center">
-              <a 
-                  href="/files/resume.pdf" 
-                  target="_blank" 
+              <a
+                  href="/files/resume.pdf"
+                  target="_blank"
                   rel="noopener noreferrer"
-                  class="inline-block bg-[#ccff00] text-black font-bold text-base md:text-lg px-6 py-2.5 md:px-7 md:py-3 rounded-lg no-underline transition-colors duration-300 hover:bg-black hover:text-white"
+                  class="inline-block bg-accent text-black font-bold text-base md:text-lg px-6 py-2.5 md:px-7 md:py-3 rounded-lg no-underline transition-colors duration-300 hover:bg-black hover:text-white"
               >
-                  {t('footer.cv')}
+                  {t('nav.cv')}
               </a>
           </li>
       </ul>
