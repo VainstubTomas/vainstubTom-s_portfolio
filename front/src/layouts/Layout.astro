@@ -22,6 +22,7 @@ const { title, description, lang } = Astro.props
 		<meta name="description" content={description}>
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<script is:inline>document.documentElement.classList.add('js')</script>
 	</head>
 	<body>
 		<div class="relative z-10">
@@ -29,6 +30,17 @@ const { title, description, lang } = Astro.props
 			<slot />
 			<Footer/>
 		</div>
+		<script>
+			// Muestra con fade + slide cada [data-reveal] la primera vez que entra al viewport.
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach((entry) => {
+					if (!entry.isIntersecting) return;
+					entry.target.classList.add('is-visible');
+					observer.unobserve(entry.target);
+				});
+			}, { rootMargin: '0px 0px -10% 0px' });
+			document.querySelectorAll('[data-reveal]').forEach((el) => observer.observe(el));
+		</script>
 		<script>
 			// Cualquier elemento con [data-copy-email] copia el mail y avisa con un toast.
 			// @ts-ignore

@@ -34,12 +34,12 @@ const t = useTranslations(lang);
 	<main>
 
 		<!-- TEMP: azul (blue-900) en vez de --color-brand. Solo el hero lleva el degradé; se desvanece hacia el negro del resto de la web. -->
-		<div class="relative isolate px-4">
+		<div class="relative isolate px-4 min-h-svh flex flex-col justify-center">
 			<div
 				aria-hidden="true"
 				class="absolute inset-0 -z-10 [background:radial-gradient(125%_100%_at_50%_10%,#000_40%,var(--color-blue-900)_100%)] [mask-image:linear-gradient(to_bottom,#000_60%,transparent)]"
 			></div>
-		<Container class="py-44 pb-30" id="inicio">
+		<Container class="pt-20 pb-0!" id="inicio">
 			<img class="rounded-full w-18 h-18 mb-8" src="/profile.jpeg" alt={t('hero.foto_alt')} width="72" height="72">
 			<h1 class="text-white text-3xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10">{t('hero.saludo')}<a
 					href="https://www.linkedin.com/in/vainstubtomas/"
@@ -67,7 +67,7 @@ const t = useTranslations(lang);
 		</div>
 
 		<div class="px-4">
-		<Container id="experiencia">
+		<Container id="experiencia" reveal>
 			<h2 class="text-3xl font-semibold mb-8 flex items-center gap-3">
 				<Suitcase class="size-7"/>
 				{t('experiencia.titulo')}
@@ -76,7 +76,7 @@ const t = useTranslations(lang);
 		</Container>
 
 		<Container id="proyectos">
-			<h2 class="text-3xl font-semibold mb-8 flex items-center gap-3">
+			<h2 data-reveal class="text-3xl font-semibold mb-8 flex items-center gap-3">
 				<Code class="size-7"/>
 				{t('proyectos.title')}
 			</h2>
@@ -84,7 +84,7 @@ const t = useTranslations(lang);
 			<Projects/>
 		</Container>
 
-		<Container id="sobre-mi">
+		<Container id="sobre-mi" reveal>
 			<h2 class="text-3xl font-semibold mb-8 flex items-center gap-3">
 				<SobreMiIcon class="size-7"/>
 				{t('sobremi.titulo')}
@@ -92,7 +92,7 @@ const t = useTranslations(lang);
 			<Sobremi/>
 		</Container>
 
-		<Container id="contacto">
+		<Container id="contacto" reveal>
 			<h2 class="text-3xl font-semibold mb-8 flex items-center gap-3">
 				<ContactIcon class="size-7"/>
 				{t('contacto.titulo')}

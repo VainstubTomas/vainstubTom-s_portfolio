@@ -34,3 +34,20 @@ body {
 section[id] {
     scroll-margin-top: 5rem;
 }
+
+/* Reveal al hacer scroll: solo se oculta si hay JS (clase .js en <html>),
+   así sin JS o con "reducir movimiento" el contenido se ve siempre. */
+@media (prefers-reduced-motion: no-preference) {
+    .js [data-reveal] {
+        opacity: 0;
+        transform: translateY(2rem);
+        transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: opacity, transform;
+    }
+
+    .js [data-reveal].is-visible {
+        opacity: 1;
+        transform: none;
+    }
+}
