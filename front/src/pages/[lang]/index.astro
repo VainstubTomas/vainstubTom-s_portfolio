@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import { useTranslations, languages } from '../../i18n/utils';
 
-import Badge from '../../components/Badge.astro';
+import HeroIdentity from '../../components/HeroIdentity.astro';
 import SocialPill from '../../components/SocialPill.astro'
 import Experience from '../../components/Experience.astro';
 import Container from '../../components/Container.astro'
@@ -40,16 +40,8 @@ const t = useTranslations(lang);
 				class="absolute inset-0 -z-10 [background:radial-gradient(125%_100%_at_50%_10%,#000_40%,var(--color-blue-900)_100%)] [mask-image:linear-gradient(to_bottom,#000_60%,transparent)]"
 			></div>
 		<Container class="pt-20 pb-0!" id="inicio">
-			<div class="memoji relative w-24 mb-6 aspect-[260/226]" role="img" aria-label={t('hero.foto_alt')}>
-				<img class="absolute inset-0 size-full" src="/memoji-body.png" alt="" width="260" height="226" fetchpriority="high">
-				<img class="memoji-arm absolute inset-0 size-full" src="/memoji-arm.png" alt="" width="260" height="226" fetchpriority="high">
-			</div>
-			<h1 class="text-white text-3xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10">{t('hero.saludo')}<a
-					href="https://www.linkedin.com/in/vainstubtomas/"
-					target="_blank"
-					rel="noopener noreferrer"
-					class="flex justify-center items-center"
-				><Badge>{t('hero.pastilla')}</Badge></a></h1>
+			<HeroIdentity/>
+			<h1 class="text-white text-3xl md:text-4xl lg:text-5xl font-bold pb-6 lg:pb-10">{t('hero.saludo')}</h1>
 			<h2 class="text-xl lg:text-2xl text-wrap max-w-[700px]">{t('hero.texto')}</h2>
 
 			<nav class="flex gap-2 py-5 flex-wrap">

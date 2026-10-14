@@ -77,3 +77,19 @@ section[id] {
     40% { transform: rotate(2deg); }
     48% { transform: rotate(-1deg); }
 }
+
+/* LED del estado "Disponible": el halo respira suavemente. */
+@media (prefers-reduced-motion: no-preference) {
+    .led {
+        animation: led-glow 2.4s ease-in-out infinite;
+    }
+}
+
+.led {
+    box-shadow: 0 0 6px 1px rgb(52 211 153 / 0.7);
+}
+
+@keyframes led-glow {
+    0%, 100% { box-shadow: 0 0 4px 1px rgb(52 211 153 / 0.5); opacity: 0.85; }
+    50% { box-shadow: 0 0 12px 3px rgb(52 211 153 / 0.9); opacity: 1; }
+}
