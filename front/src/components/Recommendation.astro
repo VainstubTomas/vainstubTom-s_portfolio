@@ -12,7 +12,7 @@ const initials = AUTHOR.split(" ").map((w) => w[0]).join("");
 <!-- Card glass con formato de recomendación de LinkedIn. -->
 <figure
     data-reveal
-    class="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-white/[0.08] to-white/[0.02] p-6 md:p-8 backdrop-blur-xl backdrop-saturate-150 shadow-[0_8px_32px_rgb(0_0_0/0.35),inset_0_1px_0_rgb(255_255_255/0.12)]"
+    class="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-white/[0.08] to-white/[0.02] p-7 md:p-10 backdrop-blur-xl backdrop-saturate-150 shadow-[0_8px_32px_rgb(0_0_0/0.35),inset_0_1px_0_rgb(255_255_255/0.12)]"
 >
     <div aria-hidden="true" class="pointer-events-none absolute -top-24 -left-24 size-64 rounded-full bg-blue-500/10 blur-3xl"></div>
 
@@ -28,7 +28,7 @@ const initials = AUTHOR.split(" ").map((w) => w[0]).join("");
         <Linkedin class="ml-auto size-6 shrink-0 text-white/40" />
     </figcaption>
 
-    <blockquote class="relative mt-6 text-base md:text-lg leading-relaxed text-white/75 text-pretty">
+    <blockquote class="relative mt-8 text-base md:text-lg leading-loose text-white/75 text-pretty">
         {t('reco.mensaje')}
     </blockquote>
 </figure>
