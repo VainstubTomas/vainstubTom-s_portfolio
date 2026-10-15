@@ -1,0 +1,34 @@
+---
+import { useTranslations, getLangFromUrl } from "../i18n/utils"
+import Linkedin from "./icons/Linkedin.astro"
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const AUTHOR = "Nahuel Davila";
+const initials = AUTHOR.split(" ").map((w) => w[0]).join("");
+---
+
+<!-- Card glass con formato de recomendación de LinkedIn. -->
+<figure
+    data-reveal
+    class="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-white/[0.08] to-white/[0.02] p-6 md:p-8 backdrop-blur-xl backdrop-saturate-150 shadow-[0_8px_32px_rgb(0_0_0/0.35),inset_0_1px_0_rgb(255_255_255/0.12)]"
+>
+    <div aria-hidden="true" class="pointer-events-none absolute -top-24 -left-24 size-64 rounded-full bg-blue-500/10 blur-3xl"></div>
+
+    <figcaption class="relative flex items-center gap-4">
+        <span
+            aria-hidden="true"
+            class="grid size-14 shrink-0 place-items-center rounded-full border border-white/15 bg-gradient-to-br from-blue-500/40 to-blue-900/60 text-lg font-semibold text-white"
+        >{initials}</span>
+        <div class="min-w-0">
+            <p class="text-lg md:text-xl font-semibold text-white leading-tight">{AUTHOR}</p>
+            <p class="text-sm md:text-base text-white/60">{t('reco.rol')}</p>
+        </div>
+        <Linkedin class="ml-auto size-6 shrink-0 text-white/40" />
+    </figcaption>
+
+    <blockquote class="relative mt-6 text-base md:text-lg leading-relaxed text-white/75 text-pretty">
+        {t('reco.mensaje')}
+    </blockquote>
+</figure>

@@ -5,6 +5,7 @@ import { useTranslations, languages } from '../../i18n/utils';
 import HeroIdentity from '../../components/HeroIdentity.astro';
 import SocialPill from '../../components/SocialPill.astro'
 import SectionTitle from '../../components/SectionTitle.astro';
+import Recommendation from '../../components/Recommendation.astro';
 import StackMarquee from '../../components/StackMarquee.astro';
 import Experience from '../../components/Experience.astro';
 import Container from '../../components/Container.astro'
@@ -76,6 +77,16 @@ const t = useTranslations(lang);
 		<Container id="proyectos">
 			<SectionTitle>{t('proyectos.title')}</SectionTitle>
 			<Projects/>
+		</Container>
+
+		<!-- Sin enlace en navbar ni footer (a propósito). -->
+		<Container id="recomendaciones" class="pt-24 md:pt-32 pb-40! md:pb-52!">
+			<p data-reveal class="mb-20 md:mb-24 lg:-mx-24 text-center text-5xl sm:text-6xl md:text-8xl font-extrabold tracking-tight leading-[1.05] text-balance bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent">{t('reco.titulo')}</p>
+			<Recommendation/>
+			<ul data-reveal class="mt-8 flex flex-wrap items-center justify-center gap-4">
+				<li><span class="rounded-full border border-white/10 bg-white/5 py-2 px-5 text-base lg:text-lg text-white/90 backdrop-blur-xl shadow-[inset_0_1px_0_rgb(255_255_255/0.12)]">Git flow</span></li>
+				<li><span class="rounded-full border border-white/10 bg-white/5 py-2 px-5 text-base lg:text-lg text-white/90 backdrop-blur-xl shadow-[inset_0_1px_0_rgb(255_255_255/0.12)]">SCRUM</span></li>
+			</ul>
 		</Container>
 
 		<Container id="contacto">
