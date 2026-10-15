@@ -2,13 +2,16 @@
     "nav.inicio": "Home",
     "nav.exp": "Experience",
     "nav.proyectos": "Projects",
-    "nav.sobremi": "About Me",
     "nav.contacto": "Contact",
     "nav.cv": "Resume",
 
-    "hero.saludo": "Hi, I'm Tomás Vainstub",
+    "hero.nombre": "Tomás Vainstub",
     "hero.pastilla": "Available",
-    "hero.texto": "+2 years of experience in IT. From Paraná, Argentina. Advanced Computer Engineering student.",
+    "hero.rol": "Software developer",
+    "hero.estudio": "Advanced Computer Engineering student",
+
+    "intro.titulo": "+3 years of experience",
+    "intro.subtitulo": "Within the IT field",
 
     "experiencia.titulo": "Work Experience",
     "experiencia.fecha_1": "Jul. 2025 - present",
@@ -20,8 +23,13 @@
     "experiencia.puesto_2": "Technical Service Administrator",
     "experiencia.descrip_2": "Provide technical support to clients for problems or questions about the company's software or hardware. Provide feedback to the development area as well as support and solutions. Maintain stock of products and materials. Test final products before sale.",
 
+    "reco.titulo": "Teamwork",
+    "reco.rol": "Full Stack Developer",
+    "reco.grafico_alt": "Git graph diagram showing the main, develop, feature, release and hotfix branches",
+    "reco.mensaje": "During his introduction to the world of development, Tomás showed an excellent attitude from the very first moment toward every task assigned to him. He stands out for his commitment to the team, his ability to adapt and his constant focus on meeting goals. Without a doubt, Tomás is a well-rounded professional.",
+
+    "stack.frase": "Clean, maintainable and scalable code",
     "proyectos.title": "Projects",
-    "proyectos.nuevo": "Loading new project",
     "proyectos.p1": "Tomás Vainstub Portfolio",
     "proyectos.descrip_p1": "Personal website developed with Astro and Tailwind CSS to showcase projects, experience and software development skills.",
     "proyectos.p2": "Ivolution Trainer Landing Page",
@@ -31,23 +39,18 @@
     "proyectos.p4": "IvolutionX Landing Page",
     "proyectos.descrip_p4": "Corporate landing page developed for Ivolution, focused on presenting the company's solutions in a clear and effective way.",
 
-    "sobremi.titulo": "About Me",
-    "sobremi.texto1": "Software Developer with an engineering mindset specialized in the design and implementation of comprehensive systems, with a strong focus on Backend and Industrial Internet of Things (IIoT)",
-    "sobremi.stack": "My main tech stack includes",
-    "sobremi.herramientas_pastilla": "Tools",
-    "sobremi.texto2": "I currently apply this knowledge to develop optimal solutions in corporate environments combining good development practices with an analytical vision for problem solving.",
 
-    "contacto.titulo": "Contact",
-    "contacto.texto": "In order to maintain orderly and efficient communication, I centralize all professional interactions through my email. If you would like to discuss potential projects or technical requirements, please contact me at ",
-    "contacto.mail": "vainstubtomas@gmail.com",
+
+    "contacto.titular": "Let's build something together",
+    "contacto.apoyo": "Is your company looking to hire a developer, or do you have a project in mind? Drop me a line.",
+    "contacto.copiar": "Copy",
+    "contacto.copiado": "Copied!",
 
     "toast.mail_clipboard": "Email copied to clipboard",
 
     "footer.derechos": "All rights reserved",
-    "footer.inicio": "Home",
-    "footer.exp": "Experience",
-    "footer.proyectos": "Projects",
-    "footer.sobremi": "About Me",
-    "footer.contacto": "Contact",
-    "footer.cv": "Resume"
+    "meta.title": "Tomás Vainstub – Software Developer",
+    "meta.description": "Software developer and advanced Computer Engineering student. Interested in continuous learning and building optimal software solutions.",
+    "hero.foto_alt": "Memoji of Tomás waving",
+    "proyectos.alt": "Screenshot of the project"
 }

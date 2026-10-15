@@ -1,46 +1,52 @@
 ---
 import { useTranslations, getLangFromUrl } from "../i18n/utils"
+import { EMAIL } from "../lib/nav"
+import AvailabilityPill from "./AvailabilityPill.astro"
+import SocialPill from "./SocialPill.astro"
+import GitHub from "./icons/GitHub.astro"
+import Linkedin from "./icons/Linkedin.astro"
+import Mail from "./icons/Mail.astro"
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<section id="email-contact-section">
-    <h2 class="text-xl lg:text-2xl text-wrap max-w-[700px">{t('contacto.texto')}<span class="text-yellow-100 hover:text-blue-200 transition-colors cursor-pointer"> {t('contacto.mail')}</span></h2>
-</section>
+<!-- Cierre en espejo del hero: titular grande, card con la acción principal y pastillas. -->
+<div class="relative isolate text-center">
+    <div
+        aria-hidden="true"
+        class="pointer-events-none absolute left-1/2 bottom-0 -z-10 h-96 w-[900px] max-w-[100vw] -translate-x-1/2 translate-y-1/3 [background:radial-gradient(closest-side,var(--color-blue-900),transparent)] opacity-60"
+    ></div>
 
-<script>
-    // @ts-ignore
-    import Toastify from 'toastify-js';
-    import 'toastify-js/src/toastify.css';
+    <h2 data-reveal class="text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.05] text-balance pb-[0.15em] bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent">{t('contacto.titular')}</h2>
+    <p data-reveal class="mt-5 mx-auto max-w-xl text-lg md:text-xl text-white/60 text-pretty">{t('contacto.apoyo')}</p>
 
-    const supportEmail = 'vainstubtomas@gmail.com';
+    <div
+        data-reveal
+        class="mt-10 mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 rounded-3xl border border-white/10 bg-gradient-to-b from-white/[0.08] to-white/[0.02] p-5 md:p-6 backdrop-blur-xl backdrop-saturate-150 shadow-[0_8px_32px_rgb(0_0_0/0.35),inset_0_1px_0_rgb(255_255_255/0.12)]"
+    >
+        <span class="flex items-center gap-3 text-lg sm:text-xl md:text-2xl font-semibold text-white break-all">
+            <Mail class="size-6 shrink-0 text-white/60"/>
+            {EMAIL}
+        </span>
+        <button
+            type="button"
+            data-copy-email={EMAIL}
+            data-toast={t('toast.mail_clipboard')}
+            data-copied={t('contacto.copiado')}
+            class="shrink-0 rounded-full border border-white/10 bg-white/5 px-6 py-2 text-base font-medium text-white transition-colors hover:bg-white/10 cursor-pointer"
+        ><span data-label>{t('contacto.copiar')}</span></button>
+    </div>
 
-    const copyEmailToClipboard = async (email: string, toastText: string) => {
-        try {
-            await navigator.clipboard.writeText(email);
-            // @ts-ignore
-            Toastify({
-                text: toastText,
-                className: "emailClipboard",
-                gravity: "bottom",
-                style: {
-                    background: "#00b09b",
-                }
-            }).showToast();
-        } catch (err) {
-            console.error('Error al intentar copiar: ', err);
-        }
-    };
-
-    document.addEventListener('DOMContentLoaded', () => {
-        const emailPill = document.getElementById('email-contact-section');
-        if (emailPill) {
-            const toastText = emailPill.dataset.toastText || 'Email copied';
-            emailPill.addEventListener('click', (e) => {
-                e.preventDefault();
-                copyEmailToClipboard(supportEmail, toastText);
-            });
-        }
-    });
-</script>
+    <div data-reveal class="mt-8 flex flex-wrap items-center justify-center gap-4">
+        <SocialPill href="https://www.linkedin.com/in/vainstubtomas/">
+            <Linkedin class="size-4 lg:size-6"/>
+            LinkedIn
+        </SocialPill>
+        <SocialPill href="https://github.com/VainstubTomas">
+            <GitHub class="size-4 lg:size-6"/>
+            GitHub
+        </SocialPill>
+        <AvailabilityPill />
+    </div>
+</div>

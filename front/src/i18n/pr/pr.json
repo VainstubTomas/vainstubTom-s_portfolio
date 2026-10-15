@@ -2,13 +2,16 @@
     "nav.inicio": "Início",
     "nav.exp": "Experiência",
     "nav.proyectos": "Projetos",
-    "nav.sobremi": "Sobre Mim",
     "nav.contacto": "Contato",
     "nav.cv": "Currículo",
 
-    "hero.saludo": "Olá, sou Tomás Vainstub",
+    "hero.nombre": "Tomás Vainstub",
     "hero.pastilla": "Disponível",
-    "hero.texto": "+2 anos de experiência na área de TI. De Paraná, Argentina. Estudante avançado de Engenharia da Computação.",
+    "hero.rol": "Desenvolvedor de software",
+    "hero.estudio": "Estudante avançado de Engenharia da Computação",
+
+    "intro.titulo": "+3 anos de experiência",
+    "intro.subtitulo": "Na área de TI",
 
     "experiencia.titulo": "Experiência Profissional",
     "experiencia.fecha_1": "Jul. 2025 - presente",
@@ -20,8 +23,13 @@
     "experiencia.puesto_2": "Administrador de Serviço Técnico",
     "experiencia.descrip_2": "Fornecer suporte técnico ao cliente para problemas ou dúvidas sobre o software ou hardware da empresa. Fornecer feedback à área de desenvolvimento, além de suporte e soluções. Manter estoque de produtos e materiais. Testar produtos finais antes da venda.",
 
+    "reco.titulo": "Trabalho em equipe",
+    "reco.rol": "Desenvolvedor Full Stack",
+    "reco.grafico_alt": "Diagrama de um git graph com os ramos main, develop, feature, release e hotfix",
+    "reco.mensaje": "Durante sua entrada no mundo do desenvolvimento, Tomás demonstrou desde o primeiro momento uma excelente predisposição diante de cada tarefa atribuída. Destaca-se pelo comprometimento com a equipe, pela capacidade de adaptação e pelo foco constante no cumprimento de objetivos. Sem dúvida, Tomás é um profissional completo.",
+
+    "stack.frase": "Código limpo, manutenível e escalável",
     "proyectos.title": "Projetos",
-    "proyectos.nuevo": "Carregando novo projeto",
     "proyectos.p1": "Portfólio de Tomás Vainstub",
     "proyectos.descrip_p1": "Site pessoal desenvolvido com Astro e Tailwind CSS para mostrar projetos, experiência e habilidades em desenvolvimento de software.",
     "proyectos.p2": "Landing Page Ivolution Trainer",
@@ -31,23 +39,18 @@
     "proyectos.p4": "Landing Page IvolutionX",
     "proyectos.descrip_p4": "Landing page corporativa desenvolvida para Ivolution, focada em apresentar as soluções da empresa de forma clara e eficaz.",
 
-    "sobremi.titulo": "Sobre Mim",
-    "sobremi.texto1": "Desenvolvedor de Software com mentalidade de engenheiro especializado no design e implementação de sistemas integrais, com forte foco em Backend e Internet das Coisas Industrial (IIoT)",
-    "sobremi.stack": "Minha stack tecnológica principal inclui",
-    "sobremi.herramientas_pastilla": "Ferramentas",
-    "sobremi.texto2": "Atualmente aplico esses conhecimentos para desenvolver soluções ótimas em ambientes corporativos combinando boas práticas de desenvolvimento com uma visão analítica para resolução de problemas.",
 
-    "contacto.titulo": "Contato",
-    "contacto.texto": "Com o objetivo de manter uma comunicação ordenada e eficiente, centralizo todas as interações profissionais através do meu e-mail. Se desejar discutir potenciais projetos ou requisitos técnicos, por favor entre em contato em ",
-    "contacto.mail": "vainstubtomas@gmail.com",
+
+    "contacto.titular": "Vamos construir algo juntos",
+    "contacto.apoyo": "Sua empresa busca um desenvolvedor ou tem um projeto em mente? Me escreva.",
+    "contacto.copiar": "Copiar",
+    "contacto.copiado": "Copiado!",
 
     "toast.mail_clipboard": "Correio copiado para a área de transferência",
 
     "footer.derechos": "Todos os direitos reservados",
-    "footer.inicio": "Início",
-    "footer.exp": "Experiência",
-    "footer.proyectos": "Projetos",
-    "footer.sobremi": "Sobre Mim",
-    "footer.contacto": "Contato",
-    "footer.cv": "Currículo"
+    "meta.title": "Tomás Vainstub – Desenvolvedor de software",
+    "meta.description": "Desenvolvedor de software e estudante avançado de Engenharia da Computação. Interessado em aprendizado contínuo e no desenvolvimento de soluções de software otimizadas.",
+    "hero.foto_alt": "Memoji do Tomás acenando",
+    "proyectos.alt": "Captura de tela do projeto"
 }

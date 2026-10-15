@@ -1,84 +1,72 @@
 ---
 import LanguageSelector from "./LanguageSelector.astro"
 import { useTranslations, getLangFromUrl } from "../i18n/utils"
+import { NAV_LINKS } from "../lib/nav"
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+const linkClass = "opacity-80 hover:opacity-100 transition-[opacity,transform] duration-150 ease-out origin-bottom";
+const cvClass = "inline-block bg-white/5 text-white font-medium border border-white/10 shadow-[inset_0_1px_0_rgb(255_255_255/0.15)] rounded-xl no-underline transition-colors duration-300 hover:bg-white/10 hover:border-white/20 px-5 py-2";
 ---
 
-<header class="flex justify-between items-center px-4 py-5 w-full fixed top-0 left-0 right-0 bg-black/80 backdrop-blur-lg z-50">
-    <!-- Menú desktop -->
-    <nav class="hidden md:flex flex-row gap-x-10 mx-auto items-center">
-        <LanguageSelector />
-        <a href="#inicio" class="opacity-70 hover:opacity-100 transition-opacity duration-300">{t('nav.inicio')}</a>
-        <a href="#experiencia" class="opacity-70 hover:opacity-100 transition-opacity duration-300">{t('nav.exp')}</a>
-        <a href="#proyectos" class="opacity-70 hover:opacity-100 transition-opacity duration-300">{t('nav.proyectos')}</a>
-        <a href="#sobre-mi" class="opacity-70 hover:opacity-100 transition-opacity duration-300">{t('nav.sobremi')}</a>
-        <a href="#contacto" class="opacity-70 hover:opacity-100 transition-opacity duration-300">{t('nav.contacto')}</a>
-        <a href="/files/resume.pdf" target="_blank" class="inline-block bg-[#ccff00] text-black font-bold text-lg px-7 py-3 rounded-lg no-underline transition-colors duration-300 hover:bg-black hover:text-white">{t('nav.cv')}</a>
-    </nav>
-
-    <!-- Botón hamburguesa (solo móvil) -->
-    <button id="menu-toggle" class="md:hidden flex flex-col gap-1.5 p-2 ml-auto z-50" aria-label="Toggle menu">
-        <span id="line1" class="block w-6 h-0.5 bg-white transition-all duration-300"></span>
-        <span id="line2" class="block w-6 h-0.5 bg-white transition-all duration-300"></span>
-        <span id="line3" class="block w-6 h-0.5 bg-white transition-all duration-300"></span>
-    </button>
-
-    <!-- Menú móvil -->
-    <nav id="mobile-menu" class="md:hidden fixed top-[72px] left-0 right-0 bg-black/95 backdrop-blur-lg hidden">
-        <div class="flex flex-col items-center gap-6 py-8">
+<header class="fixed top-4 inset-x-0 z-50 px-4 flex justify-center pointer-events-none">
+    <div
+        id="navbar"
+        data-dock
+        class="glass pointer-events-auto relative w-full md:w-fit rounded-2xl transition-[background-color,padding] duration-300 data-[scrolled=true]:bg-black/40"
+    >
+        <!-- Dock desktop -->
+        <nav class="hidden md:flex flex-row gap-x-6 items-center px-5 py-2.5">
             <LanguageSelector />
-            <a href="#inicio" class="mobile-link opacity-70 hover:opacity-100 transition-opacity duration-300 text-lg">{t('nav.inicio')}</a>
-            <a href="#experiencia" class="mobile-link opacity-70 hover:opacity-100 transition-opacity duration-300 text-lg">{t('nav.exp')}</a>
-            <a href="#proyectos" class="mobile-link opacity-70 hover:opacity-100 transition-opacity duration-300 text-lg">{t('nav.proyectos')}</a>
-            <a href="#sobre-mi" class="mobile-link opacity-70 hover:opacity-100 transition-opacity duration-300 text-lg">{t('nav.sobremi')}</a>
-            <a href="#contacto" class="mobile-link opacity-70 hover:opacity-100 transition-opacity duration-300 text-lg">{t('nav.contacto')}</a>
-            <a href="/files/resume.pdf" target="_blank" class="inline-block bg-[#ccff00] text-black font-bold text-lg px-7 py-3 rounded-lg no-underline transition-colors duration-300 hover:bg-black hover:text-white">{t('nav.cv')}</a>
+            {NAV_LINKS.map(({href, key}) => <a href={href} data-dock-item class={linkClass}>{t(key)}</a>)}
+            <a href="/files/resume.pdf" target="_blank" rel="noopener noreferrer" class={cvClass}>{t('nav.cv')}</a>
+        </nav>
+
+        <!-- Barra móvil -->
+        <div class="md:hidden flex items-center justify-between pl-5 pr-2 py-2">
+            <span class="font-semibold text-sm opacity-90">Tomás Vainstub</span>
+            <button id="menu-toggle" class="flex flex-col gap-1.5 p-2" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+                <span class="menu-line block w-6 h-0.5 bg-white transition-all duration-300"></span>
+                <span class="menu-line block w-6 h-0.5 bg-white transition-all duration-300"></span>
+                <span class="menu-line block w-6 h-0.5 bg-white transition-all duration-300"></span>
+            </button>
         </div>
-    </nav>
+
+        <!-- Menú móvil -->
+        <nav id="mobile-menu" class="md:hidden absolute top-full mt-2 inset-x-0 hidden rounded-2xl border border-white/15 bg-neutral-950/95 backdrop-blur-xl shadow-[0_16px_48px_rgb(0_0_0/0.6)]">
+            <div class="flex flex-col items-center gap-6 py-8">
+                <LanguageSelector />
+                {NAV_LINKS.map(({href, key}) => <a href={href} class={`mobile-link text-lg opacity-80 hover:opacity-100 transition-opacity duration-300`}>{t(key)}</a>)}
+                <a href="/files/resume.pdf" target="_blank" rel="noopener noreferrer" class="inline-block bg-white/5 text-white font-medium border border-white/10 shadow-[inset_0_1px_0_rgb(255_255_255/0.15)] rounded-xl no-underline transition-colors duration-300 hover:bg-white/10 hover:border-white/20 text-lg px-7 py-3">{t('nav.cv')}</a>
+            </div>
+        </nav>
+    </div>
 </header>
 
-<script is:inline>
-    document.addEventListener('DOMContentLoaded', () => {
-        const menuToggle = document.getElementById('menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
-        const line1 = document.getElementById('line1');
-        const line2 = document.getElementById('line2');
-        const line3 = document.getElementById('line3');
+<script>
+    const navbar = document.getElementById('navbar');
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('mobile-menu');
+    const [l1, l2, l3] = Array.from(document.querySelectorAll<HTMLElement>('.menu-line'));
 
-        let isOpen = false;
+    const setOpen = (open: boolean) => {
+        menu?.classList.toggle('hidden', !open);
+        toggle?.setAttribute('aria-expanded', String(open));
+        l1.style.transform = open ? 'rotate(45deg) translate(5px, 5px)' : 'none';
+        l2.style.opacity = open ? '0' : '1';
+        l3.style.transform = open ? 'rotate(-45deg) translate(6px, -6px)' : 'none';
+    };
 
-        menuToggle?.addEventListener('click', () => {
-            isOpen = !isOpen;
-            
-            if (isOpen) {
-                // Mostrar menú
-                mobileMenu?.classList.remove('hidden');
-                // Animar a X
-                line1.style.transform = 'rotate(45deg) translate(5px, 5px)';
-                line2.style.opacity = '0';
-                line3.style.transform = 'rotate(-45deg) translate(6px, -6px)';
-            } else {
-                // Ocultar menú
-                mobileMenu?.classList.add('hidden');
-                // Volver a hamburguesa
-                line1.style.transform = 'none';
-                line2.style.opacity = '1';
-                line3.style.transform = 'none';
-            }
-        });
-
-        // Cerrar menú al hacer clic en un link
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                isOpen = false;
-                mobileMenu?.classList.add('hidden');
-                line1.style.transform = 'none';
-                line2.style.opacity = '1';
-                line3.style.transform = 'none';
-            });
-        });
+    toggle?.addEventListener('click', () => {
+        setOpen(toggle.getAttribute('aria-expanded') !== 'true');
     });
+    document.querySelectorAll('.mobile-link').forEach((link) => {
+        link.addEventListener('click', () => setOpen(false));
+    });
+
+    // Al hacer scroll la barra gana opacidad para seguir legible sobre el contenido.
+    const onScroll = () => navbar?.setAttribute('data-scrolled', String(window.scrollY > 40));
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
 </script>

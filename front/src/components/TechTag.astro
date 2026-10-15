@@ -1,0 +1,37 @@
+---
+import Astro_ from "./icons/tech/Astro.astro";
+import Cpp from "./icons/tech/Cpp.astro";
+import JavaScript from "./icons/tech/JavaScript.astro";
+import N8n from "./icons/tech/N8n.astro";
+import Next from "./icons/tech/Next.astro";
+import Python from "./icons/tech/Python.astro";
+import React from "./icons/tech/React.astro";
+import Tailwind from "./icons/tech/Tailwind.astro";
+import TypeScript from "./icons/tech/TypeScript.astro";
+
+interface Props {
+    name: string;
+}
+
+const TECH = {
+    "Next.js": { class: "bg-black text-white", Icon: Next },
+    "React": { class: "bg-blue-600 text-white", Icon: React },
+    "Astro": { class: "bg-orange-400 text-white", Icon: Astro_ },
+    "Tailwind CSS": { class: "bg-cyan-800 text-white", Icon: Tailwind },
+    "Python": { class: "bg-blue-500 text-white", Icon: Python },
+    "C++": { class: "bg-blue-700 text-white", Icon: Cpp },
+    "JavaScript": { class: "bg-yellow-400 text-black", Icon: JavaScript },
+    "TypeScript": { class: "bg-blue-600 text-white", Icon: TypeScript },
+    "n8n": { class: "bg-[#EA4B71] text-white", Icon: N8n },
+} as const;
+
+const { name } = Astro.props;
+const tech = TECH[name as keyof typeof TECH];
+---
+
+{tech && (
+    <span class={`flex gap-x-2 rounded-full text-xs items-center ${tech.class} py-1 px-2`}>
+        <tech.Icon />
+        {name}
+    </span>
+)}

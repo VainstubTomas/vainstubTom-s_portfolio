@@ -1,0 +1,121 @@
+---
+import { useTranslations, getLangFromUrl } from "../i18n/utils"
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Git flow dibujado como un `git log --graph` vertical: el tiempo corre hacia abajo.
+const X = { main: 70, hotfix: 120, release: 170, develop: 220, feature: 280 };
+const COLOR = {
+    main: "#7dd3fc",
+    develop: "#a78bfa",
+    feature: "#34d399",
+    release: "#fbbf24",
+    hotfix: "#fb7185",
+};
+type Branch = keyof typeof COLOR;
+
+const HEIGHT = 570;
+const R = 6; // radio único para todos los commits
+// El tramo que entra desde la izquierda se dibuja primero (y < 0); el resto arranca 0,5 s después.
+const delay = (y: number, extra = 0) => `${(y < 0 ? 0 : 0.5 + (y / HEIGHT) * 1.8 + extra).toFixed(2)}s`;
+
+const line = (x: number, y1: number, y2: number) => `M${x} ${y1} L${x} ${y2}`;
+const curve = (x1: number, y1: number, x2: number, y2: number) => {
+    const k = (y2 - y1) * 0.55;
+    return `M${x1} ${y1} C${x1} ${y1 + k} ${x2} ${y2 - k} ${x2} ${y2}`;
+};
+
+// Tramos: líneas de cada rama y curvas de corte/merge (coloreadas con la rama de origen).
+// `main` entra desde fuera de la pantalla por la izquierda (el SVG tiene overflow visible).
+const LEAD = `M-1200 -10 L40 -10 C62 -10 ${X.main} 0 ${X.main} 30`;
+
+const paths: { d: string; b: Branch; y: number }[] = [
+    { d: LEAD, b: "main", y: -10 },
+    { d: line(X.main, 30, 525), b: "main", y: 30 },
+    { d: curve(X.main, 30, X.develop, 70), b: "develop", y: 30 },
+    { d: line(X.develop, 70, 550), b: "develop", y: 70 },
+    // feature A
+    { d: curve(X.develop, 100, X.feature, 130), b: "feature", y: 100 },
+    { d: line(X.feature, 130, 170), b: "feature", y: 130 },
+    { d: curve(X.feature, 170, X.develop, 205), b: "feature", y: 170 },
+    // feature B
+    { d: curve(X.develop, 225, X.feature, 255), b: "feature", y: 225 },
+    { d: line(X.feature, 255, 290), b: "feature", y: 255 },
+    { d: curve(X.feature, 290, X.develop, 325), b: "feature", y: 290 },
+    // release: sale de develop, vuelve a main y a develop
+    { d: curve(X.develop, 345, X.release, 375), b: "release", y: 345 },
+    { d: line(X.release, 375, 405), b: "release", y: 375 },
+    { d: curve(X.release, 405, X.main, 440), b: "release", y: 405 },
+    { d: curve(X.release, 405, X.develop, 440), b: "release", y: 405 },
+    // hotfix: sale de main, vuelve a main y a develop
+    { d: curve(X.main, 470, X.hotfix, 495), b: "hotfix", y: 470 },
+    { d: curve(X.hotfix, 495, X.main, 525), b: "hotfix", y: 495 },
+    { d: curve(X.hotfix, 495, X.develop, 525), b: "hotfix", y: 495 },
+];
+
+const commits: { b: Branch; y: number }[] = [
+    { b: "main", y: 30 }, { b: "main", y: 440 }, { b: "main", y: 525 },
+    { b: "develop", y: 70 }, { b: "develop", y: 205 }, { b: "develop", y: 325 },
+    { b: "develop", y: 440 }, { b: "develop", y: 525 },
+    { b: "feature", y: 130 }, { b: "feature", y: 170 }, { b: "feature", y: 255 }, { b: "feature", y: 290 },
+    { b: "release", y: 375 }, { b: "release", y: 405 },
+    { b: "hotfix", y: 495 },
+];
+
+const labels: { text: string; x: number; y: number; anchor: "start" | "middle" | "end"; accent?: Branch }[] = [
+    { text: "main", x: 0, y: -20, anchor: "start", accent: "main" },
+    { text: "dev", x: X.develop + 14, y: 74, anchor: "start", accent: "develop" },
+    { text: "feature/api", x: X.feature + 12, y: 134, anchor: "start", accent: "feature" },
+    { text: "feature/ui", x: X.feature + 12, y: 259, anchor: "start", accent: "feature" },
+    { text: "release/1.0", x: X.release - 12, y: 379, anchor: "end", accent: "release" },
+    { text: "hotfix/1.0.1", x: X.hotfix + 12, y: 486, anchor: "start", accent: "hotfix" },
+    { text: "v1.0", x: X.main - 12, y: 444, anchor: "end" },
+    { text: "v1.0.1", x: X.main - 12, y: 529, anchor: "end" },
+];
+---
+
+<div data-reveal class="gf-wrap hidden lg:block mx-auto w-full max-w-[320px]">
+    <svg viewBox={`0 0 380 ${HEIGHT}`} class="w-full h-auto overflow-visible" role="img" aria-label={t('reco.grafico_alt')} xmlns="http://www.w3.org/2000/svg">
+        <g fill="none" stroke-width="2.5" stroke-linecap="round">
+            {paths.map(({ d, b, y }) => (
+                <path
+                    class="gf-draw"
+                    d={d}
+                    pathLength="1"
+                    stroke={COLOR[b]}
+                    style={`--d:${delay(y)};filter:drop-shadow(0 0 3px ${COLOR[b]}88)`}
+                />
+            ))}
+        </g>
+
+        {commits.map(({ b, y }) => (
+            <circle
+                class="gf-dot"
+                cx={X[b]}
+                cy={y}
+                r={R}
+                fill={COLOR[b]}
+                style={`--d:${delay(y, 0.15)}`}
+            />
+        ))}
+
+        <!-- HEAD de develop: anillo que late. -->
+        <circle class="gf-dot" cx={X.develop} cy="550" r={R} fill={COLOR.develop} style={`--d:${delay(550, 0.15)}`} />
+        <circle class="gf-pulse" cx={X.develop} cy="550" r={R} fill="none" stroke={COLOR.develop} stroke-width="2" />
+
+        <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">
+            {labels.map(({ text, x, y, anchor, accent }) => (
+                <text
+                    class="gf-dot"
+                    x={x}
+                    y={y}
+                    text-anchor={anchor}
+                    fill={accent ? COLOR[accent] : "rgb(255 255 255 / 0.55)"}
+                    fill-opacity={accent ? 0.9 : 1}
+                    style={`--d:${delay(y, 0.3)}`}
+                >{text}</text>
+            ))}
+        </g>
+    </svg>
+</div>

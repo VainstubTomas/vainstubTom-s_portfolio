@@ -5,30 +5,14 @@ import { useTranslations, getLangFromUrl } from "../i18n/utils"
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const XP = [
-    {
-        date: `${t('experiencia.fecha_1')}`,
-        company: `${t('experiencia.institución_1')}`,
-        title:`${t('experiencia.puesto_1')}`,
-        description:`${t('experiencia.descrip_1')}`,
-    },
-    {
-        date: `${t('experiencia.fecha_2')}`,
-        company: `${t('experiencia.institución_2')}`,
-        title:`${t('experiencia.puesto_2')}`,
-        description:`${t('experiencia.descrip_2')}`,
-    },
-]
+const XP = [1, 2].map((n) => ({
+    date: t(`experiencia.fecha_${n}`),
+    company: t(`experiencia.institución_${n}`),
+    title: t(`experiencia.puesto_${n}`),
+    description: t(`experiencia.descrip_${n}`),
+}));
 ---
 
-
-<ol class="relative border-s border-default">
-    {
-        XP.map(xp=>(
-            <li class="mb-10 ms-4">
-                <ExperienceItem {...xp}/>
-            </li>
-        ))
-    }                 
-</ol>
-
+<ul class="flex flex-col gap-6">
+    {XP.map((xp) => <li><ExperienceItem {...xp}/></li>)}
+</ul>

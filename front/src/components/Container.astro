@@ -1,7 +1,13 @@
 ---
-const {class:className, id} = Astro.props
+interface Props {
+    class?: string;
+    id?: string;
+    reveal?: boolean;
+}
+
+const {class:className, id, reveal} = Astro.props
 ---
 
-<section id={id} class={`${className} w-full lg:w-[740px] mx-auto pb-24`}>
+<section id={id} data-reveal={reveal ? "" : undefined} class={`${className ?? ""} w-full lg:w-[740px] mx-auto pb-24`}>
     <slot/>
 </section>

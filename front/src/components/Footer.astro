@@ -1,41 +1,29 @@
 ---
 import { useTranslations, getLangFromUrl } from "../i18n/utils"
+import { NAV_LINKS } from "../lib/nav"
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<footer class="rounded-lg shadow mx-4 xl:mx-auto mb-10 bg-black/20 backdrop-blur-lg xl:w-[1120px]">
-    <div class="w-full mx-auto p-5 md:p-6 flex flex-col md:flex-row items-center justify-between gap-6">
-      
-      <span class="text-sm text-body text-center md:text-left opacity-60">
-          © 2025 Tomás Vainstub. {t('footer.derechos')}.
+<footer class="px-4 mb-8 flex justify-center">
+    <div data-dock class="glass w-full md:w-fit rounded-2xl px-6 py-4 md:py-3 flex flex-col md:flex-row items-center gap-4 md:gap-8">
+      <span class="text-sm text-body text-center opacity-60">
+          © {new Date().getFullYear()} Tomás Vainstub. {t('footer.derechos')}.
       </span>
-      
-      <ul class="flex flex-wrap items-center justify-center md:justify-end gap-x-5 gap-y-4 text-sm font-medium text-body">
+
+      <ul class="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 text-sm font-medium text-body">
+          {NAV_LINKS.map(({href, key}) => (
+              <li><a href={href} data-dock-item class="inline-block opacity-80 hover:opacity-100 transition-[opacity,transform] duration-150 ease-out origin-bottom">{t(key)}</a></li>
+          ))}
           <li>
-              <a href="#inicio" class="hover:underline">{t('footer.inicio')}</a>
-          </li>
-          <li>
-              <a href="#experiencia" class="hover:underline">{t('footer.exp')}</a>
-          </li>
-          <li>
-              <a href="#proyectos" class="hover:underline">{t('footer.proyectos')}</a>
-          </li>
-          <li>
-              <a href="#sobre-mi" class="hover:underline">{t('footer.sobremi')}</a>
-          </li>
-          <li>
-              <a href="#contacto" class="hover:underline">{t('footer.contacto')}</a>
-          </li>
-          <li class="w-full sm:w-auto mt-2 sm:mt-0 flex justify-center">
-              <a 
-                  href="/files/resume.pdf" 
-                  target="_blank" 
+              <a
+                  href="/files/resume.pdf"
+                  target="_blank"
                   rel="noopener noreferrer"
-                  class="inline-block bg-[#ccff00] text-black font-bold text-base md:text-lg px-6 py-2.5 md:px-7 md:py-3 rounded-lg no-underline transition-colors duration-300 hover:bg-black hover:text-white"
+                  class="inline-block bg-white/5 text-white font-medium border border-white/10 shadow-[inset_0_1px_0_rgb(255_255_255/0.15)] rounded-xl no-underline transition-colors duration-300 hover:bg-white/10 hover:border-white/20 px-4 py-1.5"
               >
-                  {t('footer.cv')}
+                  {t('nav.cv')}
               </a>
           </li>
       </ul>
