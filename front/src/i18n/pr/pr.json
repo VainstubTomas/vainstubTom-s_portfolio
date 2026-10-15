@@ -35,9 +35,11 @@
     "proyectos.descrip_p4": "Landing page corporativa desenvolvida para Ivolution, focada em apresentar as soluções da empresa de forma clara e eficaz.",
 
 
-    "contacto.titulo": "Contato",
-    "contacto.texto": "Com o objetivo de manter uma comunicação ordenada e eficiente, centralizo todas as interações profissionais através do meu e-mail. Se desejar discutir potenciais projetos ou requisitos técnicos, por favor entre em contato em ",
-    "contacto.mail": "vainstubtomas@gmail.com",
+
+    "contacto.titular": "Vamos construir algo juntos",
+    "contacto.apoyo": "Sua empresa busca um desenvolvedor ou tem um projeto em mente? Me escreva.",
+    "contacto.copiar": "Copiar",
+    "contacto.copiado": "Copiado!",
 
     "toast.mail_clipboard": "Correio copiado para a área de transferência",
 

@@ -35,9 +35,11 @@
     "proyectos.descrip_p4": "Corporate landing page developed for Ivolution, focused on presenting the company's solutions in a clear and effective way.",
 
 
-    "contacto.titulo": "Contact",
-    "contacto.texto": "In order to maintain orderly and efficient communication, I centralize all professional interactions through my email. If you would like to discuss potential projects or technical requirements, please contact me at ",
-    "contacto.mail": "vainstubtomas@gmail.com",
+
+    "contacto.titular": "Let's build something together",
+    "contacto.apoyo": "Is your company looking to hire a developer, or do you have a project in mind? Drop me a line.",
+    "contacto.copiar": "Copy",
+    "contacto.copiado": "Copied!",
 
     "toast.mail_clipboard": "Email copied to clipboard",
 

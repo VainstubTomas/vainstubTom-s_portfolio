@@ -84,6 +84,14 @@ const { title, description, lang } = Astro.props
 							gravity: 'bottom',
 							style: { background: '#00b09b' },
 						}).showToast();
+
+						// Si el botón tiene etiqueta [data-label], la cambia unos segundos ("Copiar" → "¡Copiado!").
+						const label = el.querySelector<HTMLElement>('[data-label]');
+						if (label && el.dataset.copied) {
+							const original = label.textContent;
+							label.textContent = el.dataset.copied;
+							setTimeout(() => (label.textContent = original), 2000);
+						}
 					} catch (err) {
 						console.error('No se pudo copiar el mail: ', err);
 					}
