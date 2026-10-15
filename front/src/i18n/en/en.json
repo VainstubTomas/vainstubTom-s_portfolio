@@ -2,7 +2,6 @@
     "nav.inicio": "Home",
     "nav.exp": "Experience",
     "nav.proyectos": "Projects",
-    "nav.sobremi": "About Me",
     "nav.contacto": "Contact",
     "nav.cv": "Resume",
 
@@ -35,11 +34,6 @@
     "proyectos.p4": "IvolutionX Landing Page",
     "proyectos.descrip_p4": "Corporate landing page developed for Ivolution, focused on presenting the company's solutions in a clear and effective way.",
 
-    "sobremi.titulo": "About Me",
-    "sobremi.texto1": "Software Developer with an engineering mindset specialized in the design and implementation of comprehensive systems, with a strong focus on Backend and Industrial Internet of Things (IIoT)",
-    "sobremi.stack": "My main tech stack includes",
-    "sobremi.herramientas_pastilla": "Tools",
-    "sobremi.texto2": "I currently apply this knowledge to develop optimal solutions in corporate environments combining good development practices with an analytical vision for problem solving.",
 
     "contacto.titulo": "Contact",
     "contacto.texto": "In order to maintain orderly and efficient communication, I centralize all professional interactions through my email. If you would like to discuss potential projects or technical requirements, please contact me at ",

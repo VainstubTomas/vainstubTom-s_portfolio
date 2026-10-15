@@ -2,7 +2,6 @@
     "nav.inicio": "Início",
     "nav.exp": "Experiência",
     "nav.proyectos": "Projetos",
-    "nav.sobremi": "Sobre Mim",
     "nav.contacto": "Contato",
     "nav.cv": "Currículo",
 
@@ -35,11 +34,6 @@
     "proyectos.p4": "Landing Page IvolutionX",
     "proyectos.descrip_p4": "Landing page corporativa desenvolvida para Ivolution, focada em apresentar as soluções da empresa de forma clara e eficaz.",
 
-    "sobremi.titulo": "Sobre Mim",
-    "sobremi.texto1": "Desenvolvedor de Software com mentalidade de engenheiro especializado no design e implementação de sistemas integrais, com forte foco em Backend e Internet das Coisas Industrial (IIoT)",
-    "sobremi.stack": "Minha stack tecnológica principal inclui",
-    "sobremi.herramientas_pastilla": "Ferramentas",
-    "sobremi.texto2": "Atualmente aplico esses conhecimentos para desenvolver soluções ótimas em ambientes corporativos combinando boas práticas de desenvolvimento com uma visão analítica para resolução de problemas.",
 
     "contacto.titulo": "Contato",
     "contacto.texto": "Com o objetivo de manter uma comunicação ordenada e eficiente, centralizo todas as interações profissionais através do meu e-mail. Se desejar discutir potenciais projetos ou requisitos técnicos, por favor entre em contato em ",

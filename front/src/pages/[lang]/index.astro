@@ -10,7 +10,6 @@ import Experience from '../../components/Experience.astro';
 import Container from '../../components/Container.astro'
 import Projects from '../../components/Projects.astro'
 import Contacto from '../../components/Contacto.astro';
-import Sobremi from '../../components/Sobremi.astro';
 
 import Linkedin from '../../components/icons/Linkedin.astro';
 import GitHub from '../../components/icons/GitHub.astro';
@@ -77,11 +76,6 @@ const t = useTranslations(lang);
 		<Container id="proyectos">
 			<SectionTitle>{t('proyectos.title')}</SectionTitle>
 			<Projects/>
-		</Container>
-
-		<Container id="sobre-mi" reveal>
-			<SectionTitle>{t('sobremi.titulo')}</SectionTitle>
-			<Sobremi/>
 		</Container>
 
 		<Container id="contacto" reveal>
