@@ -9,8 +9,9 @@
 
     "sobre.nacionalidad": "Nacionalidad",
     "sobre.pais": "Argentina",
-    "sobre.idioma_1": "1er idioma (Español)",
-    "sobre.idioma_2": "2do idioma (Inglés)",
+    "sobre.idiomas": "Idiomas",
+    "sobre.idioma_1": "Español",
+    "sobre.idioma_2": "Inglés",
     "sobre.edad": "Edad",
 
     "hero.nombre": "Tomás Vainstub",
