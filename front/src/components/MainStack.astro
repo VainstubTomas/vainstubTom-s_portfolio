@@ -1,0 +1,28 @@
+---
+import { useTranslations, getLangFromUrl } from "../i18n/utils";
+import { MAIN_STACK } from "../lib/stack";
+import StackItem from "./StackItem.astro";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<div
+    data-reveal
+    class="group relative mx-auto w-full max-w-4xl overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-white/[0.08] to-white/[0.02] px-4 py-7 sm:px-6 md:px-10 md:py-8 backdrop-blur-xl backdrop-saturate-150 shadow-[0_8px_32px_rgb(0_0_0/0.35),inset_0_1px_0_rgb(255_255_255/0.12)] transition-colors duration-300"
+>
+    <div aria-hidden="true" class="pointer-events-none absolute -top-24 -right-24 size-64 rounded-full bg-blue-500/10 blur-3xl"></div>
+
+    <div class="relative">
+        <p class="mb-5 text-center text-xs md:text-sm font-medium uppercase tracking-[0.22em] text-white/50">
+            {t("stack.main")}
+        </p>
+        <ul class="flex flex-wrap items-center justify-center gap-3 md:flex-nowrap">
+            {MAIN_STACK.map((name) => (
+                <li>
+                    <StackItem name={name} featured />
+                </li>
+            ))}
+        </ul>
+    </div>
+</div>

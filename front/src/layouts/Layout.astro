@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import HomeButton from '../components/HomeButton.astro';
 import '../styles/global.css';
 import '@fontsource-variable/onest';
 
@@ -30,6 +31,7 @@ const { title, description, lang } = Astro.props
 			<slot />
 			<Footer/>
 		</div>
+		<HomeButton />
 		<script>
 			// Muestra con fade + slide cada [data-reveal] la primera vez que entra al viewport.
 			const observer = new IntersectionObserver((entries) => {

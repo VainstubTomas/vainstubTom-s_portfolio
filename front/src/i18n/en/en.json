@@ -1,9 +1,17 @@
 {
     "nav.inicio": "Home",
+    "nav.sobre": "About me",
+    "nav.volver": "Back",
     "nav.exp": "Experience",
     "nav.proyectos": "Projects",
     "nav.contacto": "Contact",
     "nav.cv": "Resume",
+
+    "sobre.nacionalidad": "Nationality",
+    "sobre.pais": "Argentina",
+    "sobre.idioma_1": "1st language (Spanish)",
+    "sobre.idioma_2": "2nd language (English)",
+    "sobre.edad": "Age",
 
     "hero.nombre": "Tomás Vainstub",
     "hero.pastilla": "Available",
@@ -29,6 +37,7 @@
     "reco.mensaje": "During his introduction to the world of development, Tomás showed an excellent attitude from the very first moment toward every task assigned to him. He stands out for his commitment to the team, his ability to adapt and his constant focus on meeting goals. Without a doubt, Tomás is a well-rounded professional.",
 
     "stack.frase": "Clean, maintainable and scalable code",
+    "stack.main": "Main stack",
     "proyectos.title": "Projects",
     "proyectos.p1": "Tomás Vainstub Portfolio",
     "proyectos.descrip_p1": "Personal website developed with Astro and Tailwind CSS to showcase projects, experience and software development skills.",

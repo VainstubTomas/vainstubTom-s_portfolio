@@ -61,6 +61,48 @@ section[id] {
     }
 }
 
+/* Carta entre el hero y la intro: sube y baja muy poco. */
+@media (prefers-reduced-motion: no-preference) {
+    .float-soft {
+        animation: float-soft 6.5s ease-in-out infinite;
+    }
+}
+
+@keyframes float-soft {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+/* Sticker holográfico: la bandera es gris y el brillo tornasolado la recorre. */
+.flag-foil {
+    background-color: #a4aab2;
+}
+
+.flag-sheen {
+    background-image: linear-gradient(
+        115deg,
+        transparent 18%,
+        rgb(255 255 255 / 0.55) 34%,
+        rgb(186 198 214 / 0.45) 44%,
+        transparent 52%,
+        rgb(214 196 214 / 0.4) 68%,
+        transparent 80%
+    );
+    background-size: 220% 220%;
+    mix-blend-mode: soft-light;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .flag-sheen {
+        animation: flag-foil 7s ease-in-out infinite;
+    }
+}
+
+@keyframes flag-foil {
+    0%, 100% { background-position: 0% 40%; }
+    50% { background-position: 100% 60%; }
+}
+
 /* Memoji del hero: solo el antebrazo saluda (pivote en el codo), con pausa entre saludos. */
 @media (prefers-reduced-motion: no-preference) {
     .memoji-arm {
@@ -94,7 +136,8 @@ section[id] {
     50% { box-shadow: 0 0 12px 3px rgb(52 211 153 / 0.9); opacity: 1; }
 }
 
-/* Marquesina del stack: loop lento; se pausa al pasar el mouse. */
+/* Marquesina del stack: loop lento; se pausa al pasar el mouse.
+   Con JS (.is-ready) el desplazamiento y el arrastre se controlan por transform. */
 @keyframes marquee {
     to { transform: translateX(calc(-50% - 0.5rem)); }
 }
@@ -106,6 +149,10 @@ section[id] {
 
     .marquee:hover .marquee-track {
         animation-play-state: paused;
+    }
+
+    .marquee.is-ready .marquee-track {
+        animation: none;
     }
 }
 

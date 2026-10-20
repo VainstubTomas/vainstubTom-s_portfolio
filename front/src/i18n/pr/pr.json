@@ -1,9 +1,17 @@
 {
     "nav.inicio": "Início",
+    "nav.sobre": "Sobre mim",
+    "nav.volver": "Voltar",
     "nav.exp": "Experiência",
     "nav.proyectos": "Projetos",
     "nav.contacto": "Contato",
     "nav.cv": "Currículo",
+
+    "sobre.nacionalidad": "Nacionalidade",
+    "sobre.pais": "Argentina",
+    "sobre.idioma_1": "1ª língua (Espanhol)",
+    "sobre.idioma_2": "2ª língua (Inglês)",
+    "sobre.edad": "Idade",
 
     "hero.nombre": "Tomás Vainstub",
     "hero.pastilla": "Disponível",
@@ -29,6 +37,7 @@
     "reco.mensaje": "Durante sua entrada no mundo do desenvolvimento, Tomás demonstrou desde o primeiro momento uma excelente predisposição diante de cada tarefa atribuída. Destaca-se pelo comprometimento com a equipe, pela capacidade de adaptação e pelo foco constante no cumprimento de objetivos. Sem dúvida, Tomás é um profissional completo.",
 
     "stack.frase": "Código limpo, manutenível e escalável",
+    "stack.main": "Stack principal",
     "proyectos.title": "Projetos",
     "proyectos.p1": "Portfólio de Tomás Vainstub",
     "proyectos.descrip_p1": "Site pessoal desenvolvido com Astro e Tailwind CSS para mostrar projetos, experiência e habilidades em desenvolvimento de software.",

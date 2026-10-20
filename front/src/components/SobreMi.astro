@@ -1,0 +1,93 @@
+---
+import { useTranslations, getLangFromUrl } from "../i18n/utils";
+
+const t = useTranslations(getLangFromUrl(Astro.url));
+
+// 09/04 en formato día/mes. La edad visible se recalcula en el cliente.
+const BIRTH_YEAR = 2004;
+const BIRTH_MONTH = 4;
+const BIRTH_DAY = 9;
+
+function ageOn(date: Date) {
+    let age = date.getFullYear() - BIRTH_YEAR;
+    const month = date.getMonth() + 1;
+    if (month < BIRTH_MONTH || (month === BIRTH_MONTH && date.getDate() < BIRTH_DAY)) age--;
+    return age;
+}
+---
+
+<section id="sobre-mi" class="px-4 pt-20 md:pt-28 pb-40 md:pb-52">
+    <h2 class="sr-only">{t("nav.sobre")}</h2>
+    <div data-reveal class="mx-auto w-full max-w-[36rem]">
+        <div class="float-soft grid grid-cols-2 overflow-hidden rounded-xl border border-black bg-black shadow-[0_0_1px_1px_rgb(255_255_255/0.28),0_0_18px_2px_rgb(210_220_255/0.16)]">
+            <div class="relative aspect-square bg-black p-2.5">
+                <img
+                    src="/tomas.jpg"
+                    alt={t("hero.nombre")}
+                    width="640"
+                    height="640"
+                    class="size-full border border-white/55 object-cover object-[center_38%] grayscale contrast-105"
+                />
+            </div>
+            <div class="flex min-w-0 flex-col justify-between p-4 sm:p-5">
+                <div class="flex items-center justify-between gap-3">
+                    <p class="text-[0.95rem] tracking-[0.08em] text-white">{t("hero.nombre")}</p>
+                    <div class="flag-foil relative h-9 w-[3.4rem] shrink-0 overflow-hidden rounded-[3px] shadow-[0_0_0_1px_rgb(255_255_255/0.35),0_2px_6px_rgb(0_0_0/0.45)]" role="img" aria-label={t("sobre.pais")}>
+                <svg class="absolute inset-0 size-full" viewBox="0 0 90 60" aria-hidden="true">
+                    <rect width="90" height="20" fill="#8e959e" />
+                    <rect y="20" width="90" height="20" fill="#d5d8de" />
+                    <rect y="40" width="90" height="20" fill="#8e959e" />
+                    <g transform="translate(45 30)" fill="none" stroke="#5e6570" stroke-width="1.2" stroke-linecap="round">
+                        <line y1="-6.2" y2="-10.2" />
+                        <line y1="-6.2" y2="-10.2" transform="rotate(22.5)" />
+                        <line y1="-6.2" y2="-10.2" transform="rotate(45)" />
+                        <line y1="-6.2" y2="-10.2" transform="rotate(67.5)" />
+                        <line y1="-6.2" y2="-10.2" transform="rotate(90)" />
+                        <line y1="-6.2" y2="-10.2" transform="rotate(112.5)" />
+                        <line y1="-6.2" y2="-10.2" transform="rotate(135)" />
+                        <line y1="-6.2" y2="-10.2" transform="rotate(157.5)" />
+                        <line y1="-6.2" y2="-10.2" transform="rotate(180)" />
+                        <line y1="-6.2" y2="-10.2" transform="rotate(202.5)" />
+                        <line y1="-6.2" y2="-10.2" transform="rotate(225)" />
+                        <line y1="-6.2" y2="-10.2" transform="rotate(247.5)" />
+                        <line y1="-6.2" y2="-10.2" transform="rotate(270)" />
+                        <line y1="-6.2" y2="-10.2" transform="rotate(292.5)" />
+                        <line y1="-6.2" y2="-10.2" transform="rotate(315)" />
+                        <line y1="-6.2" y2="-10.2" transform="rotate(337.5)" />
+                    </g>
+                    <circle cx="45" cy="30" r="5.2" fill="#6a717b" />
+                    <circle cx="45" cy="30" r="2.3" fill="none" stroke="#d5d8de" stroke-width="0.7" />
+                </svg>
+                <div class="flag-sheen pointer-events-none absolute inset-0"></div>
+                    </div>
+                </div>
+                <div class="flex items-end justify-between gap-4">
+                    <div>
+                        <p class="text-[0.62rem] uppercase tracking-[0.16em] text-white/45">{t("sobre.nacionalidad")}</p>
+                        <p class="mt-1 text-sm text-white">{t("sobre.pais")}</p>
+                        <p class="mt-1 text-[0.7rem] leading-snug text-white">{t("sobre.idioma_1")}</p>
+                        <p class="text-[0.7rem] leading-snug text-white">{t("sobre.idioma_2")}</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-[0.62rem] uppercase tracking-[0.16em] text-white/45">{t("sobre.edad")}</p>
+                        <p id="sobre-edad" class="mt-1 text-sm text-white" data-year={BIRTH_YEAR} data-month={BIRTH_MONTH} data-day={BIRTH_DAY}>{ageOn(new Date())}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    const edad = document.getElementById("sobre-edad");
+    if (edad) {
+        const year = Number(edad.dataset.year);
+        const month = Number(edad.dataset.month);
+        const day = Number(edad.dataset.day);
+        const today = new Date();
+        let age = today.getFullYear() - year;
+        const currentMonth = today.getMonth() + 1;
+        if (currentMonth < month || (currentMonth === month && today.getDate() < day)) age--;
+        edad.textContent = String(age);
+    }
+</script>

@@ -1,0 +1,60 @@
+---
+import TypeScript from "./icons/stack/TypeScript.astro";
+import Python from "./icons/stack/Python.astro";
+import React from "./icons/stack/React.astro";
+import NodeJs from "./icons/stack/NodeJs.astro";
+import Gcp from "./icons/stack/Gcp.astro";
+import Aws from "./icons/stack/Aws.astro";
+import Docker from "./icons/stack/Docker.astro";
+import Git from "./icons/stack/Git.astro";
+import MongoDb from "./icons/stack/MongoDb.astro";
+import Go from "./icons/stack/Go.astro";
+import Electron from "./icons/stack/Electron.astro";
+import CouchBase from "./icons/stack/CouchBase.astro";
+import Express from "./icons/stack/Express.astro";
+import Arduino from "./icons/stack/Arduino.astro";
+import FastAPI from "./icons/stack/FastAPI.astro";
+import CiCd from "./icons/stack/CiCd.astro";
+import JavaScript from "./icons/tech/JavaScript.astro";
+import N8n from "./icons/tech/N8n.astro";
+import type { StackName } from "../lib/stack";
+
+interface Props {
+    name: StackName;
+    featured?: boolean;
+}
+
+const ICONS: Record<StackName, typeof TypeScript> = {
+    TypeScript,
+    Python,
+    React,
+    "Node.js": NodeJs,
+    MongoDB: MongoDb,
+    GCP: Gcp,
+    AWS: Aws,
+    Docker,
+    Git,
+    Go,
+    Electron,
+    CouchBase,
+    Express,
+    Arduino,
+    n8n: N8n,
+    JavaScript,
+    FastAPI,
+    "CI/CD": CiCd,
+};
+
+const { name, featured = false } = Astro.props;
+const Icon = ICONS[name];
+---
+
+<span
+    class:list={[
+        "flex items-center gap-x-2.5 rounded-full border border-white/10 bg-white/5 text-white/90 backdrop-blur-xl shadow-[inset_0_1px_0_rgb(255_255_255/0.12)]",
+        featured ? "text-lg lg:text-xl py-2.5 px-6" : "text-base lg:text-lg py-2 px-5",
+    ]}
+>
+    <Icon class={featured ? "size-6 lg:size-7" : "size-5 lg:size-6"} />
+    {name}
+</span>
