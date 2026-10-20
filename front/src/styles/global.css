@@ -94,7 +94,8 @@ section[id] {
     50% { box-shadow: 0 0 12px 3px rgb(52 211 153 / 0.9); opacity: 1; }
 }
 
-/* Marquesina del stack: loop lento; se pausa al pasar el mouse. */
+/* Marquesina del stack: loop lento; se pausa al pasar el mouse.
+   Con JS (.is-ready) el desplazamiento y el arrastre se controlan por transform. */
 @keyframes marquee {
     to { transform: translateX(calc(-50% - 0.5rem)); }
 }
@@ -106,6 +107,10 @@ section[id] {
 
     .marquee:hover .marquee-track {
         animation-play-state: paused;
+    }
+
+    .marquee.is-ready .marquee-track {
+        animation: none;
     }
 }
 

@@ -1,40 +1,150 @@
 ---
-import TypeScript from "./icons/stack/TypeScript.astro";
-import Python from "./icons/stack/Python.astro";
-import React from "./icons/stack/React.astro";
-import NodeJs from "./icons/stack/NodeJs.astro";
-import Gcp from "./icons/stack/Gcp.astro";
-import Aws from "./icons/stack/Aws.astro";
-import Docker from "./icons/stack/Docker.astro";
-import Git from "./icons/stack/Git.astro";
-import MongoDb from "./icons/stack/MongoDb.astro";
-
-const STACK = [
-    { name: "TypeScript", Icon: TypeScript },
-    { name: "Python", Icon: Python },
-    { name: "React", Icon: React },
-    { name: "Node.js", Icon: NodeJs },
-    { name: "MongoDB", Icon: MongoDb },
-    { name: "GCP", Icon: Gcp },
-    { name: "AWS", Icon: Aws },
-    { name: "Docker", Icon: Docker },
-    { name: "Git", Icon: Git },
-];
+import { MARQUEE_STACK } from "../lib/stack";
+import StackItem from "./StackItem.astro";
 ---
 
-<!-- La pista se repite dos veces y se desplaza -50% para un loop sin saltos. -->
-<div class="marquee overflow-hidden [mask-image:linear-gradient(to_right,transparent,#000_12%,#000_88%,transparent)]">
-    <ul class="marquee-track flex w-max gap-4 py-2">
-        {[0, 1].map((copy) => STACK.map(({ name, Icon }) => (
+<!-- Tres copias: el offset vive en la central para arrastrar en ambos sentidos sin saltos. -->
+<div
+    data-marquee
+    class="marquee overflow-hidden cursor-grab select-none touch-none [mask-image:linear-gradient(to_right,transparent,#000_12%,#000_88%,transparent)] data-[dragging=true]:cursor-grabbing"
+>
+    <ul class="marquee-track flex w-max gap-4 py-2 will-change-transform">
+        {[0, 1, 2].map((copy) => MARQUEE_STACK.map((name) => (
             <li
-                class:list={["marquee-item", { "marquee-copy": copy === 1 }]}
-                aria-hidden={copy === 1 ? "true" : undefined}
+                class:list={["marquee-item shrink-0", { "marquee-copy": copy !== 0 }]}
+                aria-hidden={copy !== 0 ? "true" : undefined}
             >
-                <span class="flex items-center gap-x-2.5 rounded-full border border-white/10 bg-white/5 py-2 px-5 text-base lg:text-lg text-white/90 backdrop-blur-xl shadow-[inset_0_1px_0_rgb(255_255_255/0.12)]">
-                    <Icon class="size-5 lg:size-6" />
-                    {name}
-                </span>
+                <StackItem name={name} />
             </li>
         )))}
     </ul>
 </div>
+
+<script>
+    const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const LOOP_SECONDS = 55;
+    const DRAG_THRESHOLD = 5;
+
+    document.querySelectorAll<HTMLElement>("[data-marquee]").forEach((root) => {
+        const track = root.querySelector<HTMLElement>(".marquee-track");
+        if (!track || reduceMotion) return;
+
+        let offset = 0;
+        let loopWidth = 0;
+        let paused = false;
+        let dragging = false;
+        let pending = false;
+        let activePointerId: number | null = null;
+        let lastX = 0;
+        let startX = 0;
+        let startY = 0;
+        let lastT = performance.now();
+
+        const measure = () => {
+            const w = track.scrollWidth / 3;
+            if (w > 0) {
+                const wasZero = loopWidth === 0;
+                loopWidth = w;
+                if (wasZero) offset = loopWidth;
+            }
+        };
+
+        const rebalance = () => {
+            if (!loopWidth) return;
+            while (offset < loopWidth) offset += loopWidth;
+            while (offset >= loopWidth * 2) offset -= loopWidth;
+        };
+
+        const apply = () => {
+            track.style.transform = `translate3d(${-offset}px, 0, 0)`;
+        };
+
+        measure();
+        new ResizeObserver(measure).observe(track);
+        root.classList.add("is-ready");
+
+        const tick = (now: number) => {
+            const dt = (now - lastT) / 1000;
+            lastT = now;
+            if (!paused && !dragging && loopWidth) {
+                offset += (loopWidth / LOOP_SECONDS) * dt;
+                rebalance();
+                apply();
+            }
+            requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+
+        root.addEventListener("pointerenter", () => {
+            if (!dragging) paused = true;
+        });
+        root.addEventListener("pointerleave", () => {
+            if (!dragging && activePointerId === null) paused = false;
+        });
+
+        root.addEventListener("pointerdown", (e) => {
+            if (e.button !== 0) return;
+            pending = true;
+            dragging = false;
+            activePointerId = e.pointerId;
+            startX = lastX = e.clientX;
+            startY = e.clientY;
+            paused = true;
+            try {
+                root.setPointerCapture(e.pointerId);
+            } catch {
+                /* noop */
+            }
+        });
+
+        root.addEventListener("pointermove", (e) => {
+            if (activePointerId !== e.pointerId) return;
+            if (!pending && !dragging) return;
+
+            if (pending && !dragging) {
+                const dx = e.clientX - startX;
+                const dy = e.clientY - startY;
+                if (Math.abs(dx) < DRAG_THRESHOLD && Math.abs(dy) < DRAG_THRESHOLD) return;
+                if (Math.abs(dy) > Math.abs(dx) * 1.2) {
+                    pending = false;
+                    return;
+                }
+                pending = false;
+                dragging = true;
+                root.dataset.dragging = "true";
+            }
+
+            if (!dragging) return;
+            e.preventDefault();
+
+            offset -= e.clientX - lastX;
+            lastX = e.clientX;
+            rebalance();
+            apply();
+        });
+
+        const endPointer = (e: PointerEvent) => {
+            if (activePointerId !== null && e.pointerId !== activePointerId) return;
+            pending = false;
+            activePointerId = null;
+            if (dragging) {
+                dragging = false;
+                delete root.dataset.dragging;
+            }
+            try {
+                if (root.hasPointerCapture(e.pointerId)) root.releasePointerCapture(e.pointerId);
+            } catch {
+                /* noop */
+            }
+            paused = root.matches(":hover");
+        };
+
+        root.addEventListener("pointerup", endPointer);
+        root.addEventListener("pointercancel", endPointer);
+        root.addEventListener("lostpointercapture", (e) => {
+            if (activePointerId === e.pointerId) endPointer(e);
+        });
+
+        root.addEventListener("dragstart", (e) => e.preventDefault());
+    });
+</script>

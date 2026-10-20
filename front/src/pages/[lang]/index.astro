@@ -7,6 +7,7 @@ import SocialPill from '../../components/SocialPill.astro'
 import SectionTitle from '../../components/SectionTitle.astro';
 import GitGraph from '../../components/GitGraph.astro';
 import Recommendation from '../../components/Recommendation.astro';
+import MainStack from '../../components/MainStack.astro';
 import StackMarquee from '../../components/StackMarquee.astro';
 import Experience from '../../components/Experience.astro';
 import Container from '../../components/Container.astro'
@@ -72,7 +73,10 @@ const t = useTranslations(lang);
 
 		<section data-reveal class="-mx-4 pt-24 md:pt-32 pb-40 md:pb-52">
 			<p class="max-w-4xl mx-auto px-4 mb-12 text-center text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.1] text-balance pb-[0.15em] bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent">{t('stack.frase')}</p>
-			<StackMarquee/>
+			<MainStack/>
+			<div class="mt-10 md:mt-12">
+				<StackMarquee/>
+			</div>
 		</section>
 
 		<Container id="proyectos">
