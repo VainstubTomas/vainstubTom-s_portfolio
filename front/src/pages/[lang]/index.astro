@@ -13,6 +13,7 @@ import Experience from '../../components/Experience.astro';
 import Container from '../../components/Container.astro'
 import Projects from '../../components/Projects.astro'
 import Contacto from '../../components/Contacto.astro';
+import SobreMi from '../../components/SobreMi.astro';
 
 import Linkedin from '../../components/icons/Linkedin.astro';
 import GitHub from '../../components/icons/GitHub.astro';
@@ -60,8 +61,10 @@ const t = useTranslations(lang);
 		</Container>
 		</div>
 
+		<SobreMi />
+
 		<div class="px-4">
-		<section data-reveal class="max-w-5xl mx-auto text-center pt-12 pb-40 md:pb-52">
+		<section data-reveal class="max-w-5xl mx-auto text-center pb-40 md:pb-52">
 			<p class="text-5xl sm:text-6xl md:text-8xl font-extrabold tracking-tight leading-[1.05] text-balance pb-[0.15em] bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent">{t('intro.titulo')}</p>
 			<p class="mt-5 text-xl md:text-3xl font-medium text-white/60">{t('intro.subtitulo')}</p>
 		</section>

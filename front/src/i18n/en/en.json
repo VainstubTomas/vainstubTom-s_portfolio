@@ -7,6 +7,12 @@
     "nav.contacto": "Contact",
     "nav.cv": "Resume",
 
+    "sobre.nacionalidad": "Nationality",
+    "sobre.pais": "Argentina",
+    "sobre.idioma_1": "1st language (Spanish)",
+    "sobre.idioma_2": "2nd language (English)",
+    "sobre.edad": "Age",
+
     "hero.nombre": "Tomás Vainstub",
     "hero.pastilla": "Available",
     "hero.rol": "Software developer",
