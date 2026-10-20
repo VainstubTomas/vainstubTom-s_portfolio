@@ -1,5 +1,7 @@
 {
     "nav.inicio": "Home",
+    "nav.sobre": "About me",
+    "nav.volver": "Back",
     "nav.exp": "Experience",
     "nav.proyectos": "Projects",
     "nav.contacto": "Contact",
