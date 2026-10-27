@@ -20,17 +20,17 @@
     "hero.estudio": "Advanced Computer Engineering student",
 
     "intro.titulo": "+3 years of experience",
-    "intro.subtitulo": "Within the IT field",
+    "intro.subtitulo": "within the IT field",
 
     "experiencia.titulo": "Work Experience",
     "experiencia.fecha_1": "Jul. 2025 - present",
-    "experiencia.institución_1": "Institution - Ivolution",
+    "experiencia.institución_1": "Ivolution",
     "experiencia.puesto_1": "Software Developer",
-    "experiencia.descrip_1": "Design and implementation of scalable full-stack solutions using modern technologies to ensure clean and maintainable code, managing version control and collaboration through online workflows.",
-    "experiencia.fecha_2": "Feb. 2024 - present",
-    "experiencia.institución_2": "Institution - Ivolution",
+    "experiencia.descrip_1": "Design and implementation of scalable full-stack solutions ensuring clean and maintainable code, managing version control and collaborating through online workflows.",
+    "experiencia.fecha_2": "Feb. 2024 - Oct. 2025",
+    "experiencia.institución_2": "Ivolution",
     "experiencia.puesto_2": "Technical Service Administrator",
-    "experiencia.descrip_2": "Provide technical support to clients for problems or questions about the company's software or hardware. Provide feedback to the development area as well as support and solutions. Maintain stock of products and materials. Test final products before sale.",
+    "experiencia.descrip_2": "Provide technical support to clients about problems and questions about the company's software or hardware. Give feedback to R&D as well as support and solutions. Maintain stock of products and materials. Test final products before sale.",
 
     "reco.titulo": "Teamwork",
     "reco.rol": "Full Stack Developer",
@@ -56,7 +56,7 @@
 
 
     "contacto.titular": "Let's build something together",
-    "contacto.apoyo": "Is your company looking to hire a developer, or do you have a project in mind? Drop me a line.",
+    "contacto.apoyo": "Is your company looking to hire a developer, or do you have a project in mind? Send me an email.",
     "contacto.copiar": "Copy",
     "contacto.copiado": "Copied!",
 
