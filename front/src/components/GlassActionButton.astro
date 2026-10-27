@@ -1,0 +1,22 @@
+---
+interface Props {
+    href: string;
+    label: string;
+    variant?: "fixed" | "inline";
+}
+
+const { href, label, variant = "inline" } = Astro.props;
+
+const glass =
+    "group overflow-hidden rounded-2xl border border-blue-300/25 bg-gradient-to-b from-blue-400/25 to-blue-600/[0.08] text-blue-100/70 backdrop-blur-xl backdrop-saturate-150 shadow-[0_8px_32px_rgb(30_58_138/0.45),inset_0_1px_0_rgb(191_219_254/0.4)] transition-[transform,border-color,background-color] duration-300 hover:-translate-y-0.5 hover:border-blue-200/45 hover:from-blue-400/35";
+
+const layout =
+    variant === "fixed"
+        ? "fixed bottom-5 right-5 z-50 flex flex-col items-center justify-center gap-0.5 px-3.5 py-2.5"
+        : "inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium";
+---
+
+<a href={href} class:list={["relative", glass, layout]}>
+    <span aria-hidden="true" class="pointer-events-none absolute -top-8 -right-8 size-20 rounded-full bg-blue-400/40 blur-2xl"></span>
+    <span class="relative">{label}</span>
+</a>

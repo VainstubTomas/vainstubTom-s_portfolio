@@ -1,0 +1,48 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { useTranslations, languages } from '../../i18n/utils';
+import Container from '../../components/Container.astro';
+import Projects from '../../components/Projects.astro';
+import GlassActionButton from '../../components/GlassActionButton.astro';
+
+export function getStaticPaths() {
+	return (Object.keys(languages) as (keyof typeof languages)[]).map((lang) => ({
+		params: { lang },
+	}));
+}
+
+const lang = Astro.params.lang as keyof typeof languages;
+const t = useTranslations(lang);
+---
+
+<Layout lang={lang} title={t('proyectos.title')} description={t('meta.description')}>
+	<main>
+		<section class="relative isolate flex min-h-svh flex-col justify-center px-4 text-center">
+			<div
+				aria-hidden="true"
+				class="absolute inset-0 -z-10 [background:radial-gradient(125%_100%_at_50%_10%,#000_40%,var(--color-blue-900)_100%)] [mask-image:linear-gradient(to_bottom,#000_60%,transparent)]"
+			></div>
+			<h1 class="mx-auto max-w-5xl text-5xl sm:text-6xl md:text-8xl font-extrabold tracking-tight leading-[1.05] text-balance pb-[0.15em] bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent">
+				{t('proyectos.title')}
+			</h1>
+		</section>
+
+		<div class="px-4">
+			<Container class="!pb-12 md:!pb-16">
+				<Projects />
+			</Container>
+
+			<section class="mx-auto max-w-2xl px-4 pb-28 text-center md:pb-36">
+				<p
+					data-reveal
+					class="text-2xl font-medium leading-snug text-white/70 text-balance md:text-3xl"
+				>
+					{t('proyectos.cta')}
+				</p>
+				<div data-reveal class="mt-10 flex justify-center">
+					<GlassActionButton href={`/${lang}/#contacto`} label={t('proyectos.contactame')} />
+				</div>
+			</section>
+		</div>
+	</main>
+</Layout>

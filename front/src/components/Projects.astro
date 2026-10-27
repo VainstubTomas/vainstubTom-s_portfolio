@@ -2,6 +2,14 @@
 import { useTranslations, getLangFromUrl } from "../i18n/utils"
 import { getProjects } from "../lib/api";
 import TechTag from "./TechTag.astro";
+import GlassActionButton from "./GlassActionButton.astro";
+
+interface Props {
+    limit?: number;
+    showVerMas?: boolean;
+}
+
+const { limit, showVerMas = false } = Astro.props;
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -10,7 +18,9 @@ const titleKey = `title_${lang}` as const;
 const descKey = `description_${lang}` as const;
 
 // El más reciente (id mayor) primero.
-const projects = [...(await getProjects())].sort((a, b) => b.id - a.id).map((p) => ({
+const sorted = [...(await getProjects())].sort((a, b) => b.id - a.id);
+const visible = limit != null ? sorted.slice(0, limit) : sorted;
+const projects = visible.map((p) => ({
     title: p[titleKey],
     description: p[descKey],
     image: p.image,
@@ -50,3 +60,8 @@ const projects = [...(await getProjects())].sort((a, b) => b.id - a.id).map((p) 
         ))
     }
 </ul>
+{showVerMas && (
+    <div class="mt-10 flex justify-center lg:-mx-20">
+        <GlassActionButton href={`/${lang}/proyectos`} label={t("proyectos.verMas")} />
+    </div>
+)}
