@@ -1,8 +1,15 @@
 export const NAV_LINKS = [
-    { href: "#inicio", key: "nav.inicio" },
-    { href: "#experiencia", key: "nav.exp" },
-    { href: "#proyectos", key: "nav.proyectos" },
-    { href: "#contacto", key: "nav.contacto" },
+    { key: "nav.inicio", hash: "#inicio" },
+    { key: "nav.exp", hash: "#experiencia" },
+    { key: "nav.proyectos", page: "proyectos" },
+    { key: "nav.contacto", hash: "#contacto" },
 ] as const;
+
+export type NavLink = (typeof NAV_LINKS)[number];
+
+export function navHref(lang: string, link: NavLink): string {
+    if ("page" in link && link.page) return `/${lang}/${link.page}`;
+    return `/${lang}/${link.hash}`;
+}
 
 export const EMAIL = "vainstubtomas@gmail.com";

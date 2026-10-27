@@ -1,6 +1,6 @@
 ---
 import { useTranslations, getLangFromUrl } from "../i18n/utils"
-import { NAV_LINKS } from "../lib/nav"
+import { NAV_LINKS, navHref } from "../lib/nav"
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -13,8 +13,8 @@ const t = useTranslations(lang);
       </span>
 
       <ul class="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 text-sm font-medium text-body">
-          {NAV_LINKS.map(({href, key}) => (
-              <li><a href={href} data-dock-item class="inline-block opacity-80 hover:opacity-100 transition-[opacity,transform] duration-150 ease-out origin-bottom">{t(key)}</a></li>
+          {NAV_LINKS.map((link) => (
+              <li><a href={navHref(lang, link)} data-dock-item class="inline-block opacity-80 hover:opacity-100 transition-[opacity,transform] duration-150 ease-out origin-bottom">{t(link.key)}</a></li>
           ))}
           <li>
               <a
